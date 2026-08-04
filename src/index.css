@@ -29,12 +29,26 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 body {
   background: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-body);
+  overflow-x: hidden;
+  width: 100%;
+  min-width: 320px;
+}
+
+#root {
+  overflow-x: hidden;
+}
+
+img, svg, iframe, video {
+  max-width: 100%;
+  height: auto;
 }
 
 ::selection {

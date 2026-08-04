@@ -23,7 +23,8 @@ const educationData = [
     score: "52%",
     years: "2020 — 2022",
     highlights: [
-      "Completed pre-university education with a foundation in mathematics and computer fundamentals.",
+      "Studied Mathematics, Physics, and Chemistry (MPC) as the core subjects.",
+      "Completed intermediate education and gained a strong foundation in analytical and problem-solving skills.",
     ],
   },
   {
