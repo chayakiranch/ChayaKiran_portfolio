@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #0b1220;
+  --color-bg-alt: #0e1728;
+  --color-panel: #121b2e;
+  --color-panel-border: #223049;
+  --color-text: #e8edf5;
+  --color-muted: #8b98ac;
+  --color-muted-2: #5f6c81;
+  --color-accent: #4fd1c5;
+  --color-accent-dim: #2b6f68;
+  --color-amber: #f0b429;
+
+  --font-display: "Space Grotesk", "Segoe UI", sans-serif;
+  --font-body: "Inter", "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", "Courier New", monospace;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-bg);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@keyframes node-pulse {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 1; }
+}
+@keyframes dash-flow {
+  to { stroke-dashoffset: -520; }
+}
+@keyframes brand-ping {
+  0% { box-shadow: 0 0 0 0 rgba(79, 209, 197, 0.5); }
+  70% { box-shadow: 0 0 0 8px rgba(79, 209, 197, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(79, 209, 197, 0); }
+}
