@@ -139,7 +139,7 @@ export default function Home() {
             </NavLink>
           </div>
 
-          <div className="relative pl-8 max-w-[820px]">
+          <div className="relative pl-8">
             <div className="absolute left-[3px] top-2 bottom-2 w-px bg-panel-border" />
 
             <div className="flex flex-col gap-8">
