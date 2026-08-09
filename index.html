@@ -7,6 +7,51 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <script>
+      // Randomly picks one of two favicon variants on every page load/refresh.
+      (function () {
+        var variant = Math.random() < 0.5 ? "a" : "b";
+
+        var variants = {
+          a: {
+            ico: "/favicon.ico",
+            16: "/favicon-16x16.png",
+            32: "/favicon-32x32.png",
+            192: "/favicon-192x192.png",
+            apple: "/apple-touch-icon.png",
+          },
+          b: {
+            ico: "/favicon-b.ico",
+            16: "/favicon-b-16x16.png",
+            32: "/favicon-b-32x32.png",
+            192: "/favicon-b-192x192.png",
+            apple: "/apple-touch-icon-b.png",
+          },
+        };
+        var set = variants[variant];
+
+        function setIcon(rel, sizes, href, type) {
+          var selector = sizes
+            ? 'link[rel="' + rel + '"][sizes="' + sizes + '"]'
+            : 'link[rel="' + rel + '"]:not([sizes])';
+          var el = document.querySelector(selector);
+          if (!el) {
+            el = document.createElement("link");
+            el.rel = rel;
+            if (sizes) el.sizes = sizes;
+            document.head.appendChild(el);
+          }
+          if (type) el.type = type;
+          el.href = href;
+        }
+
+        setIcon("icon", null, set.ico, "image/x-icon");
+        setIcon("icon", "16x16", set[16], "image/png");
+        setIcon("icon", "32x32", set[32], "image/png");
+        setIcon("icon", "192x192", set[192], "image/png");
+        setIcon("apple-touch-icon", "180x180", set.apple);
+      })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Portfolio of Chintakula Chaya Kiran — Cloud & Edge Computing student, MERN stack developer, AWS practitioner." />
     <title>Chintakula Chaya Kiran — Cloud & Edge Computing Engineer</title>
