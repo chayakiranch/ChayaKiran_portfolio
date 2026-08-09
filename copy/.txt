@@ -1,0 +1,26 @@
+I have a responsive web application, but it is not adapting properly when the browser window is resized or minimized. The layout breaks instead of automatically adjusting to the available screen width.
+
+Your task is to make the entire website fully responsive without changing the design or functionality.
+
+Requirements:
+2. Ensure all pages work correctly on:
+   - Desktop (1920px+)
+   - Laptop (1366px)
+   - Tablet (768px)
+   - Mobile (320px–480px)
+3. Prevent horizontal scrolling.
+4. Images, cards, tables, and forms should resize correctly.
+5. Navigation should collapse into a mobile menu when needed.
+6. Text should scale properly and not overflow containers.
+7. Buttons and inputs should remain usable on all screen sizes.
+8. Fix any fixed-width elements that cause overflow.
+9. Ensure the layout automatically adjusts whenever the browser window is resized or restored from a minimized size.
+10. Use CSS best practices (min-width, max-width, clamp(), flex-wrap, grid-template-columns, etc.).
+11. Keep the existing UI, colors, animations, and functionality unchanged.
+12. Optimize for performance and maintainable code.
+
+After making the changes:
+- Explain what caused the responsiveness issues.
+- List every file you modified.
+- Show the updated code for each modified file.
+- Explain why each change was necessary.
