@@ -45,11 +45,11 @@ export default function ContactPage() {
                 const isExternal = item.href.startsWith("http");
                 const target = isExternal ? "_blank" : undefined;
                 const rel = isExternal ? "noopener noreferrer" : undefined;
-                const rowClass = "flex items-center gap-3 bg-bg-alt border border-panel-border rounded-xl px-5 py-4 text-sm text-text hover:border-accent transition-colors";
+                const rowClass = "flex items-center gap-3 min-w-0 bg-bg-alt border border-panel-border rounded-xl px-5 py-4 text-sm text-text hover:border-accent transition-colors";
                 return (
                   <a key={i} href={item.href} target={target} rel={rel} className={rowClass}>
                     <Icon size={17} className="text-muted shrink-0" />
-                    <span className="truncate">{item.label}</span>
+                    <span className="truncate min-w-0 flex-1">{item.label}</span>
                   </a>
                 );
               })}
