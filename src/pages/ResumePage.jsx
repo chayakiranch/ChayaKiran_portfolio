@@ -11,16 +11,16 @@ const whatsInside = [
 
 const stats = [
   { icon: Briefcase, num: "1+", label: "Internship" },
-  { icon: FileText, num: "6+", label: "Projects" },
+  { icon: FileText, num: "2+", label: "Projects" },
   { icon: Code2, num: "MERN +", label: "Django" },
-  { icon: Award, num: "CLOUD", label: "Cloud" },
+  { icon: Award, num: "AWS", label: "Cloud" },
 ];
 
 export default function ResumePage() {
   return (
     <section className="py-24">
       <div className="max-w-[1120px] mx-auto px-6 md:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
 
           {/* LEFT — intro + what's inside */}
           <div>

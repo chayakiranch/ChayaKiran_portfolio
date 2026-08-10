@@ -20,7 +20,7 @@ export default function Home() {
             <span className="font-mono text-[0.72rem] text-muted-2 border border-panel-border rounded px-1.5 py-0.5">01</span>
             About
           </p>
-          <div className="grid md:grid-cols-2 gap-12 items-start">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
             <h2 className="font-display font-semibold text-[clamp(1.9rem,3.4vw,2.75rem)] leading-tight tracking-tight">
               I design systems that live in <em className="text-accent not-italic">two places at once</em> —
               the cloud, and the edge closest to the user.
@@ -45,7 +45,7 @@ export default function Home() {
           <h2 className="font-display font-semibold text-[clamp(1.9rem,3.4vw,2.75rem)] leading-tight tracking-tight mb-12">
             The stack, end to end.
           </h2>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-px bg-panel-border border border-panel-border rounded-2xl overflow-hidden">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-px bg-panel-border border border-panel-border rounded-2xl overflow-hidden">
             {skillsData.map((group) => (
               <div key={group.category} className={`bg-bg p-7 ${group.primary ? "bg-accent/[4%]" : ""}`}>
                 <h3 className="font-mono text-[0.82rem] tracking-wide uppercase text-muted mb-4">{group.category}</h3>
@@ -199,7 +199,7 @@ export default function Home() {
               View all projects <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
             </NavLink>
           </div>
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {projectsData.map((p) => (
               <NavLink
                 key={p.id}

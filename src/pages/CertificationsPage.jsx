@@ -7,7 +7,7 @@ export default function CertificationsPage() {
       <div className="max-w-[1120px] mx-auto px-6 md:px-8">
         <SectionHeading tag="05" eyebrow="Certifications" title="Credentials that back it up" />
 
-        <div className="grid sm:grid-cols-2 gap-5 mt-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-12">
           {certificationsData.map((c) => (
             <div key={c.id} className="bg-panel border border-panel-border border-l-[3px] border-l-amber rounded-lg p-6">
               <span className="font-mono text-[0.78rem] text-amber">{c.date}</span>

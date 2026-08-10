@@ -36,7 +36,7 @@ export default function ContactPage() {
           <p className="text-muted mt-3">Want to contact or collaborate? Ping me.</p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="bg-panel border border-panel-border rounded-3xl p-8">
             <h2 className="font-display text-2xl font-bold mb-6">Connect</h2>
             <div className="flex flex-col gap-4">
@@ -58,7 +58,7 @@ export default function ContactPage() {
 
           <div className="bg-panel border border-panel-border rounded-3xl p-8">
             <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-              <div className="grid sm:grid-cols-2 gap-5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <Field label="Name" name="name" value={form.name} onChange={handleChange} placeholder="Your name" />
                 <Field label="Email" name="email" type="email" value={form.email} onChange={handleChange} placeholder="you@example.com" />
               </div>

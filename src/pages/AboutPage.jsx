@@ -8,7 +8,7 @@ export default function AboutPage() {
       <div className="max-w-[1120px] mx-auto px-6 md:px-8">
         <SectionHeading tag="01" eyebrow="About" title="About me" />
 
-        <div className="grid md:grid-cols-2 gap-16 items-start mt-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start mt-12">
           <div className="space-y-5 text-muted">
             <p>{profile.objective}</p>
             <p>

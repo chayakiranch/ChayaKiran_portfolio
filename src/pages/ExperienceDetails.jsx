@@ -68,24 +68,23 @@ export default function ExperienceDetails() {
             ))}
           </div>
 
-          <div className="grid md:grid-cols-[250px_1fr] gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-[250px_1fr] gap-12">
             {/* SIDEBAR */}
             <div className="space-y-4 md:sticky md:top-28 h-fit">
               <h3 className="text-muted-2 uppercase text-sm tracking-wide">On This Page</h3>
               <div className="border-l border-panel-border pl-4 space-y-4">
-                {navItems.map((item) => (
-                  <a
-                    key={item.id}
-                    href={`#${item.id}`}
-                    className={`block transition-all duration-300 text-sm ${
-                      activeSection === item.id
-                        ? "text-accent border-l-2 border-accent pl-3 -ml-4"
-                        : "text-muted hover:text-accent"
-                    }`}
-                  >
-                    {item.label}
-                  </a>
-                ))}
+                {navItems.map((item) => {
+                  const linkClass = `block transition-all duration-300 text-sm ${
+                    activeSection === item.id
+                      ? "text-accent border-l-2 border-accent pl-3 -ml-4"
+                      : "text-muted hover:text-accent"
+                  }`;
+                  return (
+                    <a key={item.id} href={`#${item.id}`} className={linkClass}>
+                      {item.label}
+                    </a>
+                  );
+                })}
               </div>
             </div>
 
@@ -148,7 +147,7 @@ export default function ExperienceDetails() {
                 <h2 className="text-3xl font-bold mb-6">Projects</h2>
 
                 {experience.projects.length > 0 ? (
-                  <div className="grid md:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {experience.projects.map((project, i) => (
                       <Link
                         key={i}

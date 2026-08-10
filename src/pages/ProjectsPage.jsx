@@ -10,7 +10,7 @@ export default function ProjectsPage() {
       <div className="max-w-[1120px] mx-auto px-6 md:px-8">
         <SectionHeading tag="03" eyebrow="Projects" title="Things I've built" />
 
-        <div className="grid md:grid-cols-2 gap-6 mt-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
           {projectsData.map((p) => (
             <NavLink
               key={p.id}
