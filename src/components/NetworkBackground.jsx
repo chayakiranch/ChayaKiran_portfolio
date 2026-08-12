@@ -7,7 +7,7 @@ export default function NetworkBackground() {
   const H = 1200;
   const NODE_COUNT = 26;
 
-  const { nodes, edges } = useMemo(() => {
+  const { nodes, edges, flightPathD } = useMemo(() => {
     const nodes = Array.from({ length: NODE_COUNT }, () => ({
       x: Math.random() * W,
       y: Math.random() * H,
@@ -16,6 +16,7 @@ export default function NetworkBackground() {
     }));
 
     const edges = [];
+    const adjacency = nodes.map(() => []); // NEW: track connections so we can walk a route for the plane
     nodes.forEach((n, i) => {
       const nearest = nodes
         .map((m, j) => ({ j, d: (m.x - n.x) ** 2 + (m.y - n.y) ** 2 }))
@@ -27,10 +28,28 @@ export default function NetworkBackground() {
         if (!edges.find((e) => e.key === key)) {
           edges.push({ key, a: nodes[i], b: nodes[j] });
         }
+        adjacency[i].push(j);
+        adjacency[j].push(i);
       });
     });
 
-    return { nodes, edges };
+    // NEW: walk a chain of connected nodes so the mini plane has a route to fly along.
+    const routeLength = 9;
+    const visited = new Set();
+    let current = 0;
+    const route = [current];
+    visited.add(current);
+    for (let step = 0; step < routeLength - 1; step++) {
+      const next = adjacency[current]?.find((j) => !visited.has(j));
+      if (next === undefined) break;
+      route.push(next);
+      visited.add(next);
+      current = next;
+    }
+    const flightPathD =
+      route.length > 1 ? `M ${route.map((i) => `${nodes[i].x},${nodes[i].y}`).join(" L ")}` : null;
+
+    return { nodes, edges, flightPathD };
   }, []);
 
   return (
@@ -86,6 +105,14 @@ export default function NetworkBackground() {
             }
           />
         ))}
+
+        {/* NEW: tiny dot-sized "plane" flying along a chain of edges, auto-rotating
+            to face its direction of travel, looping indefinitely. */}
+        {flightPathD && (
+          <polygon points="-4,-2.5 4,0 -4,2.5" fill="#4fd1c5" opacity="0.85">
+            <animateMotion dur="14s" repeatCount="indefinite" rotate="auto" path={flightPathD} />
+          </polygon>
+        )}
       </svg>
     </div>
   );
