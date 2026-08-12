@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react"; // CHANGED: added useEffect, useRef
 import { NavLink } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react"; // CHANGED: removed unused Award icon import
 
 const links = [
   { to: "/", label: "Home" },
@@ -8,6 +8,7 @@ const links = [
   { to: "/experience", label: "Experience" },
   { to: "/education", label: "Education" },
   { to: "/projects", label: "Projects" },
+  { to: "/certifications", label: "Certifications" }, // CHANGED: removed icon
   { to: "/resume", label: "Resume" },
   { to: "/contact", label: "Contact" },
 ];

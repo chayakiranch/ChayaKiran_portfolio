@@ -1,4 +1,5 @@
-import { User, Briefcase, GraduationCap, Code2, Award, Eye, Download, FileText, Circle } from "lucide-react";
+import { NavLink } from "react-router-dom"; // NEW
+import { User, Briefcase, GraduationCap, Code2, Award, Eye, Download, FileText, Circle, ArrowRight } from "lucide-react"; // CHANGED: added ArrowRight
 import profile from "../data/profileData";
 
 const whatsInside = [
@@ -37,6 +38,7 @@ export default function ResumePage() {
             <div className="flex flex-col gap-5">
               {whatsInside.map((item) => {
                 const Icon = item.icon;
+                const isCertifications = item.title === "Certifications";
                 return (
                   <div key={item.title} className="flex items-start gap-4">
                     <span className="w-11 h-11 shrink-0 flex items-center justify-center rounded-xl bg-accent/[8%] border border-accent-dim text-accent">
@@ -45,6 +47,12 @@ export default function ResumePage() {
                     <div>
                       <h3 className="font-semibold text-text">{item.title}</h3>
                       <p className="text-muted text-sm mt-0.5">{item.desc}</p>
+                      {/* NEW: link straight to the full Certifications page */}
+                      {isCertifications && (
+                        <NavLink to="/certifications" className="inline-flex items-center gap-1.5 text-accent text-sm font-semibold mt-2 group">
+                          View all certifications <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+                        </NavLink>
+                      )}
                     </div>
                   </div>
                 );

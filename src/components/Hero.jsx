@@ -3,7 +3,7 @@ import profile from "../data/profileData";
 
 const stats = [
   { num: "7.88", label: "CGPA · B.Tech CSE" },
-  { num: "4", label: "Cloud & AI certifications" },
+  { num: "5", label: "Cloud & AI certifications" }, // CHANGED: 4 -> 5 to match certificationsData.js
   { num: "2", label: "Full-stack products shipped" },
   { num: "6wk", label: "MERN internship @ Vehinova" },
 ];
@@ -45,6 +45,13 @@ export default function Hero() {
             className="inline-flex items-center justify-center font-semibold text-[0.95rem] px-[26px] py-3.5 rounded-full border border-panel-border text-text transition-all hover:-translate-y-0.5 hover:border-accent hover:text-accent"
           >
             View Resume
+          </NavLink>
+          {/* NEW: CTA to the Certifications & Achievements page */}
+          <NavLink
+            to="/certifications"
+            className="inline-flex items-center justify-center font-semibold text-[0.95rem] px-[26px] py-3.5 rounded-full border border-panel-border text-text transition-all hover:-translate-y-0.5 hover:border-accent hover:text-accent"
+          >
+            View Certifications
           </NavLink>
         </div>
 

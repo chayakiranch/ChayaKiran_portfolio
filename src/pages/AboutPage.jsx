@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom"; // NEW
+import { ArrowRight, Award } from "lucide-react"; // NEW
 import SectionHeading from "../components/SectionHeading";
 import { extraCurricular } from "../data/certificationsData";
 import profile from "../data/profileData";
@@ -39,6 +41,12 @@ export default function AboutPage() {
                 ))}
               </ul>
             </div>
+
+            {/* NEW: CTA to the Certifications & Achievements page */}
+            <NavLink to="/certifications" className="inline-flex items-center gap-1.5 text-accent text-sm font-semibold mt-8 group">
+              <Award size={15} /> View Certifications
+              <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
+            </NavLink>
           </div>
         </div>
       </div>
