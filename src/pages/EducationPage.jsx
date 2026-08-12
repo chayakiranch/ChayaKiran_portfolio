@@ -16,7 +16,9 @@ export default function EducationPage() {
           <div className="absolute left-[3px] top-2 bottom-2 w-px bg-panel-border" />
 
           <div className="flex flex-col gap-8">
-            {educationData.map((edu) => (
+            {educationData
+              .filter((edu) => !edu.hidden) /* NEW: hide entries flagged hidden:true (e.g. Class X / XII) without deleting their data */
+              .map((edu) => (
               <div key={edu.id} className="relative">
                 <span className="absolute -left-[33px] top-6 w-2.5 h-2.5 rounded-full bg-accent" />
 

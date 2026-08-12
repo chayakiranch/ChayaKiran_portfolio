@@ -26,6 +26,7 @@ const educationData = [
       "Studied Mathematics, Physics, and Chemistry (MPC) as the core subjects.",
       "Completed intermediate education and gained a strong foundation in analytical and problem-solving skills.",
     ],
+    hidden: true, // NEW: excluded from Education page display; flip to false to show again
   },
   {
     id: "ssc-x",
@@ -38,6 +39,7 @@ const educationData = [
     highlights: [
       "Built a strong academic foundation across core subjects ahead of intermediate studies.",
     ],
+    hidden: true, // NEW: excluded from Education page display; flip to false to show again
   },
 ];
 

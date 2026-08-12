@@ -29,7 +29,18 @@
 
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden;
+  /* FIXED: was `overflow-x: hidden`. Per the CSS Overflow spec, when one axis
+     is non-visible ("hidden") and the other axis is left at its initial
+     "visible" value, the UA is required to force the visible axis to
+     compute as "auto" too. That silently turned <html> into a real
+     overflow:auto scroll container, which stops it from being treated as
+     the special viewport scrolling box — and THAT is what disables
+     position:sticky for every sticky element on the page (the "On This
+     Page" sidebar included), no matter how correct the sidebar's own
+     classes are. `overflow-x: clip` prevents horizontal overflow the same
+     way but is exempt from the auto-pairing rule, so it never creates a
+     scroll container. */
+  overflow-x: clip;
   width: 100%;
 }
 
@@ -37,17 +48,23 @@ body {
   background: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-body);
-  overflow-x: hidden;
+  /* FIXED: same reason as <html> above — `hidden` here forced overflow-y
+     to "auto" on <body> too, adding a second, nested scroll container
+     between the sticky sidebar and the viewport and breaking sticky's
+     containing-block calculation. `clip` fixes it without creating a
+     scroll container. Do NOT change this back to `hidden`. */
+  overflow-x: clip;
   width: 100%;
   min-width: 320px;
 }
 
-/* CHANGED: removed overflow-x:hidden from #root.
-   #root is an ordinary div (not the special-cased html/body viewport root),
-   so giving it overflow-x:hidden turned it into a real scroll container,
-   which hijacked the containing block for every position:sticky element
-   inside it (navbar, "On This Page" sidebar, etc). html/body already clip
-   horizontal overflow at the viewport level, so this isn't needed here. */
+/* NOTE: #root must NOT have any overflow-x/overflow-y declaration.
+   #root is an ordinary div (not the special-cased html/body viewport
+   root), so giving it any non-visible overflow turns it into a real
+   scroll container and hijacks the containing block for every
+   position:sticky element inside it (navbar, "On This Page" sidebar,
+   etc). html/body already clip horizontal overflow above, so #root
+   doesn't need it. */
 
 img, svg, iframe, video {
   max-width: 100%;
