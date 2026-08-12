@@ -1,58 +1,49 @@
 const experienceData = [
   {
     id: "vehinova",
-    role: "MERN Stack Development Intern",
-    company: "Vehinova Technologies",
-    location: "Vijayawada, India",
-    duration: "May 2024 — Jun 2024",
+    role: "Python Web Development Intern",
+    company: "Vehinova",
+    location: "Remote",
+    duration: "May 2024 — Jul 2024",
 
-    skills: [
-      "React.js",
-      "Node.js",
-      "Express.js",
-      "MongoDB Atlas",
-      "Django",
-      "PostgreSQL",
-      "Bootstrap",
-    ],
+    skills: ["Python", "Django", "PostgreSQL", "HTML", "CSS", "Bootstrap"],
 
     shortPoints: [
-      "Built responsive web pages using React.js for the front end.",
-      "Developed backend APIs with Express.js and Node.js.",
-      "Connected the application to MongoDB Atlas for cloud-based storage.",
-      "Collaborated with the team on a Django/PostgreSQL blogging platform.",
+      "Developed an online blogging system using Django.",
+      "Built authentication and blog management features.",
+      "Integrated PostgreSQL database management.",
+      "Designed responsive frontend pages.",
     ],
 
     overview:
-      "During my 6-week internship at Vehinova Technologies, I worked across the MERN stack — building responsive React interfaces, designing Express/Node APIs, and wiring everything to a MongoDB Atlas cloud database. Alongside my individual work, I collaborated with my teammates on a full-stack Online Blogging System built with Django and PostgreSQL, contributing to authentication, content workflows, and the responsive front end. The internship gave me hands-on experience across two different stacks while working within a real team development workflow of testing, debugging, and iteration.",
+      "During my internship at Vehinova, I contributed to the development of full-stack web applications focused on scalable backend systems, responsive user interfaces, and secure database-driven workflows. My work involved building dynamic platforms using Django, PostgreSQL, and modern web technologies while strengthening practical experience in authentication systems, CRUD operations, API integration, and real-world software development practices.",
 
     responsibilities: [
-      "Designed and built responsive web pages and UI components using React.js.",
-      "Developed RESTful backend APIs with Express.js and Node.js to handle requests and data processing.",
-      "Connected the application to MongoDB Atlas for reliable, cloud-based data storage.",
-      "Collaborated with the team on the Online Blogging System — contributing to Django views, PostgreSQL data handling, and Bootstrap-based responsive pages.",
-      "Tested features for functionality and fixed bugs across both individual and team modules.",
+      "Developed and maintained full-stack web applications using Django, PostgreSQL, HTML, CSS, and Bootstrap",
+      "Implemented authentication systems, CRUD operations, and responsive UI components for dynamic user experiences",
+      "Integrated backend logic with database workflows to manage secure content handling and application functionality",
+      "Collaborated on debugging, testing, and optimizing application performance across different modules and features",
     ],
 
     achievements: [
-      "Delivered functioning React front-end pages that consumed live backend APIs end-to-end.",
-      "Built and tested Express/Node.js API routes covering core request-handling and data-processing needs.",
-      "Contributed to a full-stack Online Blogging System (Django + PostgreSQL) as part of a team, working on authentication, CRUD workflows, and responsive UI.",
-      "Strengthened practical experience in debugging, feature testing, and full-stack development across two different stacks.",
+      "Developed a full-stack Online Blogging System using Django and PostgreSQL with secure authentication, CRUD workflows, and responsive user interfaces.",
+      "Built dynamic backend modules for content management, database integration, and user interaction handling across multiple application features.",
+      "Implemented responsive frontend designs using Bootstrap, HTML, and CSS to improve accessibility and seamless user experience across devices.",
+      "Strengthened practical expertise in backend development, debugging, database operations, and real-world software deployment workflows.",
     ],
 
     systems: [
-      "React-based front-end pages and reusable UI components",
-      "Express.js and Node.js REST API layer for request handling and data processing",
-      "MongoDB Atlas integration for cloud-hosted application data",
-      "Team-built Online Blogging System with Django, PostgreSQL, and Bootstrap-based responsive UI",
+      "Online Blogging System (Django, PostgreSQL, Bootstrap, HTML, CSS)",
+      "User authentication and authorization workflows with secure login and registration systems",
+      "Dynamic blog management modules with CRUD operations, category handling, and responsive UI integration",
+      "Database-driven content management system with PostgreSQL and Django ORM for scalable backend operations",
     ],
 
     highlights: [
-      "Full MERN stack exposure — React front end, Express/Node backend, MongoDB Atlas data layer.",
-      "Team collaboration on a Django + PostgreSQL blogging platform, including authentication and CRUD workflows.",
-      "Cloud-based data storage and retrieval using MongoDB Atlas.",
-      "Real-world testing and debugging practices across front-end and back-end code, on two different stacks.",
+      "Full-stack web development using Django, PostgreSQL, Bootstrap, HTML, and CSS with scalable backend integration",
+      "Secure authentication workflows with validated login, registration, session management, and protected user access control",
+      "Dynamic CRUD operations for blog creation, editing, publishing, and database-driven content management systems",
+      "Responsive UI implementation and optimized frontend rendering for seamless cross-device user experiences",
     ],
 
     projects: [
@@ -60,7 +51,7 @@ const experienceData = [
         id: "online-blogging-system",
         title: "Online Blogging System",
         description:
-          "A full-featured blogging platform with modules for user registration, post creation, and commenting, built on the Django framework with PostgreSQL and a Bootstrap-based responsive UI.",
+          "A scalable full-stack blogging platform designed for secure content publishing, responsive user experiences, and dynamic blog management workflows with database-driven architecture.",
         technologies: ["Django", "Python", "PostgreSQL", "Bootstrap", "HTML/CSS", "Django ORM"],
       },
     ],

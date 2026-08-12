@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react"; // CHANGED: added useEffect, useRef
 import { NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
@@ -15,14 +15,76 @@ const links = [
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
+  // NEW: hide navbar on scroll-down, show it again on any scroll-up
+  const [visible, setVisible] = useState(true);
+  const lastScrollY = useRef(0);
+
+  // NEW: refs used to measure navbar height so page content can reserve space for it
+  // (needed now that the navbar is `fixed` instead of `sticky` and is out of normal flow)
+  const headerRef = useRef(null);
+  const barRef = useRef(null);
+
+  // NEW: publish navbar height as a CSS variable (--navbar-h) consumed by <main> in App.jsx
+  useEffect(() => {
+    const updateHeight = () => {
+      if (!barRef.current) return;
+      // pt-4 (16px) top offset + pill height + 16px breathing room below it
+      const height = barRef.current.getBoundingClientRect().height + 16 + 16;
+      document.documentElement.style.setProperty("--navbar-h", `${height}px`);
+    };
+
+    updateHeight();
+    window.addEventListener("resize", updateHeight);
+    return () => window.removeEventListener("resize", updateHeight);
+  }, []);
+
+  // NEW: scroll-direction detection to show/hide the navbar
+  useEffect(() => {
+    lastScrollY.current = window.scrollY;
+
+    const handleScroll = () => {
+      const currentY = window.scrollY;
+      const diff = currentY - lastScrollY.current;
+
+      if (currentY < 80) {
+        // Always show near the top of the page
+        setVisible(true);
+      } else if (diff > 4) {
+        // scrolling down -> hide
+        setVisible(false);
+        setOpen(false); // close mobile menu when hiding
+      } else if (diff < -4) {
+        // scrolling up -> show
+        setVisible(true);
+      }
+
+      lastScrollY.current = currentY;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const linkClass = ({ isActive }) =>
     `px-5 py-2.5 rounded-full text-sm font-medium transition-colors whitespace-nowrap ${
       isActive ? "bg-accent/20 text-accent" : "text-muted hover:text-text"
     }`;
 
   return (
-    <header className="sticky top-0 z-50 px-4 pt-4">
-      <div className="max-w-[1120px] mx-auto flex items-center justify-between gap-4 bg-panel/80 backdrop-blur-md border border-panel-border rounded-full px-3 py-2 shadow-lg">
+    // CHANGED: sticky -> fixed + inset-x-0 (sticky was silently broken by
+    // overflow-x:hidden on html/body/#root in index.css, which turns those
+    // ancestors into scroll containers and disables position:sticky in most
+    // browsers). fixed removes that dependency entirely.
+    <header
+      ref={headerRef}
+      className={`fixed top-0 inset-x-0 z-50 px-4 pt-4 transition-transform duration-300 ${
+        visible ? "translate-y-0" : "-translate-y-[150%]"
+      }`}
+    >
+      <div
+        ref={barRef}
+        className="max-w-[1120px] mx-auto flex items-center justify-between gap-4 bg-panel/80 backdrop-blur-md border border-panel-border rounded-full px-3 py-2 shadow-lg"
+      >
         <NavLink to="/" className="flex items-center gap-2 pl-2" onClick={() => setOpen(false)}>
           <span className="font-mono font-semibold text-sm tracking-wide border border-panel-border rounded-lg px-2.5 py-1.5">
             Chaya Kiran

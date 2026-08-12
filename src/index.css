@@ -42,9 +42,12 @@ body {
   min-width: 320px;
 }
 
-#root {
-  overflow-x: hidden;
-}
+/* CHANGED: removed overflow-x:hidden from #root.
+   #root is an ordinary div (not the special-cased html/body viewport root),
+   so giving it overflow-x:hidden turned it into a real scroll container,
+   which hijacked the containing block for every position:sticky element
+   inside it (navbar, "On This Page" sidebar, etc). html/body already clip
+   horizontal overflow at the viewport level, so this isn't needed here. */
 
 img, svg, iframe, video {
   max-width: 100%;

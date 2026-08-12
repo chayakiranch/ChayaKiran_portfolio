@@ -25,7 +25,8 @@ function App() {
       <div className="relative z-10 flex flex-col min-h-screen">
         <Navbar />
 
-        <main className="flex-1">
+        {/* NEW: padding-top reserves space for the now-fixed Navbar; value is set by Navbar via CSS var */}
+        <main className="flex-1" style={{ paddingTop: "var(--navbar-h, 6rem)" }}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<AboutPage />} />

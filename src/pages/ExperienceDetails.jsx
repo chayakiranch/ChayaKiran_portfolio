@@ -68,9 +68,12 @@ export default function ExperienceDetails() {
             ))}
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-[250px_1fr] gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-[250px_1fr] gap-12 md:items-start">
             {/* SIDEBAR */}
-            <div className="space-y-4 md:sticky md:top-28 h-fit">
+            {/* CHANGED: md:self-start fixes the real underlying bug — grid items stretch to
+                the row's full height by default, which silently breaks position:sticky in
+                most browsers. Restricted to md+ so mobile keeps its normal static layout. */}
+            <div className="space-y-4 md:sticky md:top-28 md:self-start h-fit">
               <h3 className="text-muted-2 uppercase text-sm tracking-wide">On This Page</h3>
               <div className="border-l border-panel-border pl-4 space-y-4">
                 {navItems.map((item) => {
