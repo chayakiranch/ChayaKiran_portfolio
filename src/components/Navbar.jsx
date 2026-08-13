@@ -67,8 +67,9 @@ export default function Navbar() {
   }, []);
 
   // GLOW SYSTEM: added .glow-navlink for an animated underline glow on hover
+  // CHANGED: px-5 -> px-3.5 to tighten the spacing between nav link labels
   const linkClass = ({ isActive }) =>
-    `glow-navlink px-5 py-2.5 rounded-full text-sm font-medium transition-colors whitespace-nowrap ${
+    `glow-navlink px-3.5 py-2.5 rounded-full text-sm font-medium transition-colors whitespace-nowrap ${
       isActive ? "bg-accent/20 text-accent" : "text-muted hover:text-text"
     }`;
 
@@ -93,8 +94,8 @@ export default function Navbar() {
           </span>
         </NavLink>
 
-        {/* CHANGED: md -> lg, so the 7-link pill nav only renders once there's room */}
-        <nav className="hidden lg:flex items-center gap-1">
+        {/* CHANGED: md -> lg, so the 7-link pill nav only renders once there's room. gap-1 -> gap-0.5 to tighten spacing between links */}
+        <nav className="hidden lg:flex items-center gap-0.5">
           {links.map((l) => (
             <NavLink key={l.to} to={l.to} end={l.to === "/"} className={linkClass}>
               {l.label}

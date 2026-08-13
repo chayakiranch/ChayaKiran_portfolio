@@ -11,7 +11,7 @@ export default function CertificationCard({ cert, onView }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: 0.4, ease: "easeOut" }}
-      className="glow-card group bg-panel/70 backdrop-blur-md border border-panel-border rounded-2xl overflow-hidden"
+      className="glow-card group bg-panel/80 backdrop-blur-md border border-panel-border rounded-2xl overflow-hidden"
     >
       <button
         type="button"

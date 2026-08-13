@@ -18,8 +18,8 @@ export default function SkillCard({ category, icon, items }) {
   return (
     // GLOW SYSTEM: unified via .glow-card (see index.css)
     <div
-      className="glow-card group flex flex-col h-full bg-[#111827]/60 backdrop-blur-xl
-                 border border-white/[0.08] rounded-xl p-5
+      className="glow-card group flex flex-col h-full bg-panel/80 backdrop-blur-md
+                 border border-panel-border rounded-xl p-5
                  shadow-md shadow-black/20"
     >
       {/* SIZE REDUCED: gap-3.5 mb-6 -> gap-2.5 mb-4 */}

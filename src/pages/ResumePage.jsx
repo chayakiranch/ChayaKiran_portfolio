@@ -116,7 +116,7 @@ export default function ResumePage() {
           {/* CHANGED: h-full + flex column with centered content, so the card
               stretches to match the left column's height (via items-stretch above)
               instead of sitting short at a fixed content height. */}
-          <div className="glow-card relative overflow-hidden bg-panel border border-panel-border rounded-3xl p-10 text-center flex flex-col items-center justify-center lg:h-full">
+          <div className="glow-card relative overflow-hidden bg-panel/80 backdrop-blur-md border border-panel-border rounded-3xl p-10 text-center flex flex-col items-center justify-center lg:h-full">
             {/* CHANGED: corner dot/line accents -> full-card generative network pattern
                 (same visual language as the site-wide NetworkBackground), clipped to the
                 card via the parent's overflow-hidden rounded-3xl. */}

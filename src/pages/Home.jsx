@@ -87,7 +87,7 @@ export default function Home() {
                   <div className="absolute left-0 top-5 w-3 h-3 rounded-full bg-accent" />
 
                   <NavLink to={`/experience/${exp.id}`} className="block">
-                    <div className="glow-card bg-panel/80 border border-panel-border rounded-2xl p-5 cursor-pointer">
+                    <div className="glow-card bg-panel/80 backdrop-blur-md border border-panel-border rounded-2xl p-5 cursor-pointer">
                       <div className="flex justify-between items-start mb-5 flex-wrap gap-2">
                         <div>
                           <h3 className="text-xl md:text-2xl font-bold">{exp.role}</h3>
@@ -148,7 +148,7 @@ export default function Home() {
               <NavLink
                 key={p.id}
                 to={`/projects/${p.id}`}
-                className="glow-card block bg-panel border border-panel-border rounded-2xl p-8"
+                className="glow-card block bg-panel/80 backdrop-blur-md border border-panel-border rounded-2xl p-8"
               >
                 <div className="flex items-center justify-between mb-4">
                   <span className="font-mono text-[0.75rem] text-accent uppercase tracking-wide">{p.kicker}</span>

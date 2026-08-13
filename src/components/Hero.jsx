@@ -47,12 +47,12 @@ export default function Hero() {
           >
             View Resume
           </NavLink>
-          {/* NEW: CTA to the Certifications & Achievements page */}
+          {/* CHANGED: "View Certifications" CTA replaced with a Contact CTA */}
           <NavLink
-            to="/certifications"
+            to="/contact"
             className="glow-btn inline-flex items-center justify-center font-semibold text-[0.95rem] px-[26px] py-3.5 rounded-full border border-panel-border text-text hover:border-accent hover:text-accent"
           >
-            View Certifications
+            Contact
           </NavLink>
         </div>
 

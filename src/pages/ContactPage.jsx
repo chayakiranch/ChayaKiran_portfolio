@@ -37,7 +37,7 @@ export default function ContactPage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="glow-card bg-panel border border-panel-border rounded-3xl p-8">
+          <div className="glow-card bg-panel/80 backdrop-blur-md border border-panel-border rounded-3xl p-8">
             <h2 className="font-display text-2xl font-bold mb-6">Connect</h2>
             <div className="flex flex-col gap-4">
               {contactLinks.map((item, i) => {
@@ -56,7 +56,7 @@ export default function ContactPage() {
             </div>
           </div>
 
-          <div className="glow-card bg-panel border border-panel-border rounded-3xl p-8">
+          <div className="glow-card bg-panel/80 backdrop-blur-md border border-panel-border rounded-3xl p-8">
             <form onSubmit={handleSubmit} className="flex flex-col gap-5">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <Field label="Name" name="name" value={form.name} onChange={handleChange} placeholder="Your name" />

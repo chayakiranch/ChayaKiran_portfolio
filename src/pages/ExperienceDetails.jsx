@@ -114,7 +114,7 @@ export default function ExperienceDetails() {
                 <h2 className="text-3xl font-bold mb-6">Major Accomplishments</h2>
                 <div className="space-y-5">
                   {experience.achievements.map((item, i) => (
-                    <div key={i} className="glow-card bg-panel/80 border border-panel-border rounded-2xl p-6">
+                    <div key={i} className="glow-card bg-panel/80 backdrop-blur-md border border-panel-border rounded-2xl p-6">
                       <span className="text-accent font-bold mr-4">0{i + 1}</span>
                       <span className="text-muted">{item}</span>
                     </div>

@@ -1,5 +1,4 @@
-import { Mail, Linkedin, Github } from "lucide-react";
-import { NavLink } from "react-router-dom"; // NEW
+import { Mail, Linkedin, Github } from "lucide-react"; // CHANGED: removed unused NavLink import (Certifications footer link removed)
 import profile from "../data/profileData";
 
 const socialIcons = [
@@ -33,13 +32,6 @@ export default function Footer() {
             })}
           </div>
         </div>
-        {/* NEW: optional Certifications link in the footer */}
-        <div className="flex justify-center pb-6">
-          <NavLink to="/certifications" className="glow-navlink text-sm text-muted hover:text-accent transition-colors">
-            🏆 View Certifications &amp; Achievements
-          </NavLink>
-        </div>
-
         <div className="pt-6 border-t border-panel-border text-center text-sm text-muted-2">
           © {new Date().getFullYear()} {profile.name}. Building at the edge of cloud and code, one commit at a time.
         </div>

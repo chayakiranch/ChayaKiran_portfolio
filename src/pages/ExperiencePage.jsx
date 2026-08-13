@@ -18,7 +18,7 @@ export default function ExperiencePage() {
               <div className="absolute left-0 top-5 w-3 h-3 rounded-full bg-accent" />
 
               <Link to={`/experience/${exp.id}`} className="block">
-                <div className="glow-card bg-panel/80 border border-panel-border rounded-2xl p-5 cursor-pointer">
+                <div className="glow-card bg-panel/80 backdrop-blur-md border border-panel-border rounded-2xl p-5 cursor-pointer">
                   <div className="flex justify-between items-start mb-5 flex-wrap gap-2">
                     <div>
                       <h2 className="text-xl md:text-2xl font-bold">{exp.role}</h2>
