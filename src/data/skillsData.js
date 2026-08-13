@@ -1,28 +1,37 @@
+// Recategorized into 6 groups for the redesigned Skills section.
+// All items preserved from the original data — nothing added or removed.
 const skillsData = [
   {
     category: "Languages",
+    icon: "code",
     items: ["C", "Python", "Java (Basic)"],
-    primary: false,
   },
   {
-    category: "Web Development",
-    items: ["HTML", "CSS", "React.js", "Node.js", "Express.js", "Django"],
-    primary: true,
+    category: "Frontend",
+    icon: "layout",
+    items: ["HTML", "CSS", "React.js"],
+  },
+  {
+    category: "Backend",
+    icon: "server",
+    items: ["Node.js", "Express.js", "Django"],
+  },
+  {
+    category: "Cloud & DevOps",
+    icon: "cloud",
+    items: ["AWS", "Google Cloud", "Cloud-native Development", "Edge Computing", "Git", "GitHub"],
   },
   {
     category: "Databases",
+    icon: "database",
     items: ["MySQL", "PostgreSQL", "MongoDB"],
-    primary: false,
   },
   {
-    category: "Cloud & Tools",
-    items: ["AWS", "Git", "GitHub", "VS Code", "PyCharm"],
-    primary: true,
-  },
-  {
-    category: "Specialized Areas",
-    items: ["Google Cloud", "Cloud-native Development", "API Integration", "Edge Computing"],
-    primary: false,
+    // Renamed from "AI & Tools" — the underlying data has no AI/ML skills,
+    // so "Tools & Integration" accurately describes VS Code, PyCharm, and API Integration.
+    category: "Tools & Integration",
+    icon: "cpu",
+    items: ["API Integration", "VS Code", "PyCharm"],
   },
 ];
 
