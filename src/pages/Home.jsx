@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import Hero from "../components/Hero";
-import Chip from "../components/Chip";
+import SkillCard from "../components/SkillCard"; // NEW: replaces Chip-based Skills layout
 import profile from "../data/profileData";
 import skillsData from "../data/skillsData";
 import experienceData from "../data/experienceData";
@@ -35,26 +35,29 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SKILLS */}
-      <section className="py-24 border-t border-panel-border bg-gradient-to-b from-transparent via-panel/30 to-transparent">
+      {/* SKILLS — redesigned: glassmorphism card grid, replaces documentation-style table */}
+      {/* SIZE REDUCED: py-28 -> py-20, heading margins tightened, grid gap-8 -> gap-5 */}
+      <section className="py-20 border-t border-panel-border relative">
         <div className="max-w-[1120px] mx-auto px-6 md:px-8">
           <p className="flex items-center gap-2.5 font-mono text-[0.78rem] tracking-[0.12em] uppercase text-accent mb-5">
             <span className="font-mono text-[0.72rem] text-muted-2 border border-panel-border rounded px-1.5 py-0.5">02</span>
-            Stack
+            Skills
           </p>
-          <h2 className="font-display font-semibold text-[clamp(1.9rem,3.4vw,2.75rem)] leading-tight tracking-tight mb-12">
-            The stack, end to end.
+          <h2 className="font-display font-semibold text-[clamp(1.9rem,3.4vw,2.75rem)] leading-tight tracking-tight mb-2.5">
+            Technical Expertise
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-px bg-panel-border border border-panel-border rounded-2xl overflow-hidden">
+          <p className="text-muted text-[1.05rem] max-w-[620px] mb-10">
+            Technologies and tools I work with.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {skillsData.map((group) => (
-              <div key={group.category} className={`bg-bg p-7 ${group.primary ? "bg-accent/[4%]" : ""}`}>
-                <h3 className="font-mono text-[0.82rem] tracking-wide uppercase text-muted mb-4">{group.category}</h3>
-                <div className="flex flex-wrap gap-2">
-                  {group.items.map((item) => (
-                    <Chip key={item} small>{item}</Chip>
-                  ))}
-                </div>
-              </div>
+              <SkillCard
+                key={group.category}
+                category={group.category}
+                icon={group.icon}
+                items={group.items}
+              />
             ))}
           </div>
         </div>
