@@ -1,12 +1,12 @@
 import { NavLink } from "react-router-dom";
-import { ArrowRight, GraduationCap, MapPin } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Hero from "../components/Hero";
 import Chip from "../components/Chip";
 import profile from "../data/profileData";
 import skillsData from "../data/skillsData";
 import experienceData from "../data/experienceData";
-import educationData from "../data/educationData";
 import projectsData from "../data/projectsData";
+// EDUCATION SECTION REMOVED FROM HOME (hidden per request) — educationData import no longer needed here
 
 export default function Home() {
   return (
@@ -123,72 +123,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* EDUCATION — same timeline-card design as the Education page */}
-      <section className="py-24 border-t border-panel-border bg-gradient-to-b from-transparent via-panel/30 to-transparent">
-        <div className="max-w-[1120px] mx-auto px-6 md:px-8">
-          <p className="flex items-center gap-2.5 font-mono text-[0.78rem] tracking-[0.12em] uppercase text-accent mb-5">
-            <span className="font-mono text-[0.72rem] text-muted-2 border border-panel-border rounded px-1.5 py-0.5">04</span>
-            Education
-          </p>
-          <div className="flex items-end justify-between flex-wrap gap-4 mb-12">
-            <h2 className="font-display font-semibold text-[clamp(1.9rem,3.4vw,2.75rem)] leading-tight tracking-tight">
-              Academic background.
-            </h2>
-            <NavLink to="/education" className="inline-flex items-center gap-1.5 text-accent text-sm font-semibold group">
-              View education <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
-            </NavLink>
-          </div>
-
-          <div className="relative pl-8">
-            <div className="absolute left-[3px] top-2 bottom-2 w-px bg-panel-border" />
-
-            <div className="flex flex-col gap-8">
-              {educationData.map((edu) => (
-                <div key={edu.id} className="relative">
-                  <span className="absolute -left-[33px] top-6 w-2.5 h-2.5 rounded-full bg-accent" />
-
-                  <div className="bg-panel border border-panel-border rounded-2xl p-7">
-                    <div className="flex items-start justify-between gap-4 flex-wrap">
-                      <div className="flex items-center gap-2.5">
-                        <GraduationCap size={18} className="text-accent" />
-                        <h3 className="font-display text-lg font-semibold">{edu.degree}</h3>
-                      </div>
-                      <span className="font-mono text-[0.75rem] text-muted-2 uppercase tracking-wide whitespace-nowrap">
-                        {edu.years}
-                      </span>
-                    </div>
-
-                    <p className="text-accent text-sm font-medium mt-2">{edu.field}</p>
-                    <p className="text-text text-sm font-semibold mt-1">{edu.institution}</p>
-
-                    <div className="flex items-center gap-1.5 text-muted-2 text-xs mt-2">
-                      <MapPin size={12} />
-                      {edu.location}
-                      <span className="mx-1">·</span>
-                      {edu.score.includes("%") ? "Score" : "GPA"}: {edu.score}
-                    </div>
-
-                    <ul className="mt-5 flex flex-col gap-2.5">
-                      {edu.highlights.map((h) => (
-                        <li key={h} className="relative pl-4 text-muted text-sm leading-relaxed">
-                          <span className="absolute left-0 top-2 w-1 h-1 rounded-full bg-accent" />
-                          {h}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* EDUCATION SECTION HIDDEN ON HOME (kept intact on /education page) */}
 
       {/* PROJECTS */}
       <section className="py-24 border-t border-panel-border">
         <div className="max-w-[1120px] mx-auto px-6 md:px-8">
           <p className="flex items-center gap-2.5 font-mono text-[0.78rem] tracking-[0.12em] uppercase text-accent mb-5">
-            <span className="font-mono text-[0.72rem] text-muted-2 border border-panel-border rounded px-1.5 py-0.5">05</span>
+            <span className="font-mono text-[0.72rem] text-muted-2 border border-panel-border rounded px-1.5 py-0.5">04</span>
             Projects
           </p>
           <div className="flex items-end justify-between flex-wrap gap-4 mb-12">
