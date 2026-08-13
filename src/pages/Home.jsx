@@ -27,7 +27,7 @@ export default function Home() {
             </h2>
             <div>
               <p className="text-muted">{profile.objective}</p>
-              <NavLink to="/about" className="inline-flex items-center gap-1.5 text-accent text-sm font-semibold mt-6 group">
+              <NavLink to="/about" className="glow-navlink inline-flex items-center gap-1.5 text-accent text-sm font-semibold mt-6 group">
                 Read the full story <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
               </NavLink>
             </div>
@@ -74,7 +74,7 @@ export default function Home() {
             <h2 className="font-display font-semibold text-[clamp(1.9rem,3.4vw,2.75rem)] leading-tight tracking-tight">
               Where I've worked.
             </h2>
-            <NavLink to="/experience" className="inline-flex items-center gap-1.5 text-accent text-sm font-semibold group">
+            <NavLink to="/experience" className="glow-navlink inline-flex items-center gap-1.5 text-accent text-sm font-semibold group">
               View experience <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
             </NavLink>
           </div>
@@ -87,7 +87,7 @@ export default function Home() {
                   <div className="absolute left-0 top-5 w-3 h-3 rounded-full bg-accent" />
 
                   <NavLink to={`/experience/${exp.id}`} className="block">
-                    <div className="bg-panel/80 border border-panel-border rounded-2xl p-5 hover:border-accent hover:-translate-y-1 transition-all duration-300 cursor-pointer">
+                    <div className="glow-card bg-panel/80 border border-panel-border rounded-2xl p-5 cursor-pointer">
                       <div className="flex justify-between items-start mb-5 flex-wrap gap-2">
                         <div>
                           <h3 className="text-xl md:text-2xl font-bold">{exp.role}</h3>
@@ -108,7 +108,7 @@ export default function Home() {
 
                       <div className="flex flex-wrap gap-2 mb-5">
                         {exp.skills.map((skill, i) => (
-                          <span key={i} className="bg-bg-alt px-3 py-1.5 rounded-lg text-sm text-muted">
+                          <span key={i} className="glow-badge bg-bg-alt px-3 py-1.5 rounded-lg text-sm text-muted">
                             {skill}
                           </span>
                         ))}
@@ -139,7 +139,7 @@ export default function Home() {
             <h2 className="font-display font-semibold text-[clamp(1.9rem,3.4vw,2.75rem)] leading-tight tracking-tight">
               Things I've built.
             </h2>
-            <NavLink to="/projects" className="inline-flex items-center gap-1.5 text-accent text-sm font-semibold group">
+            <NavLink to="/projects" className="glow-navlink inline-flex items-center gap-1.5 text-accent text-sm font-semibold group">
               View all projects <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
             </NavLink>
           </div>
@@ -148,7 +148,7 @@ export default function Home() {
               <NavLink
                 key={p.id}
                 to={`/projects/${p.id}`}
-                className="block bg-panel border border-panel-border rounded-2xl p-8 transition-all hover:-translate-y-1 hover:border-accent-dim"
+                className="glow-card block bg-panel border border-panel-border rounded-2xl p-8"
               >
                 <div className="flex items-center justify-between mb-4">
                   <span className="font-mono text-[0.75rem] text-accent uppercase tracking-wide">{p.kicker}</span>
@@ -173,7 +173,7 @@ export default function Home() {
           </p>
           <NavLink
             to="/contact"
-            className="inline-flex items-center justify-center font-semibold text-[0.95rem] px-[26px] py-3.5 rounded-full bg-accent text-[#06201d] transition-transform hover:-translate-y-0.5"
+            className="glow-btn inline-flex items-center justify-center font-semibold text-[0.95rem] px-[26px] py-3.5 rounded-full bg-accent text-[#06201d]"
           >
             Get in touch
           </NavLink>

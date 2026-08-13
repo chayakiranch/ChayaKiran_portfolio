@@ -88,8 +88,8 @@ export default function ResumePage() {
                 const Icon = item.icon;
                 const isCertifications = item.title === "Certifications";
                 return (
-                  <div key={item.title} className="flex items-start gap-4">
-                    <span className="w-11 h-11 shrink-0 flex items-center justify-center rounded-xl bg-accent/[8%] border border-accent-dim text-accent">
+                  <div key={item.title} className="group flex items-start gap-4">
+                    <span className="glow-icon w-11 h-11 shrink-0 flex items-center justify-center rounded-xl bg-accent/[8%] border border-accent-dim text-accent">
                       <Icon size={19} />
                     </span>
                     <div>
@@ -97,7 +97,7 @@ export default function ResumePage() {
                       <p className="text-muted text-sm mt-0.5">{item.desc}</p>
                       {/* NEW: link straight to the full Certifications page */}
                       {isCertifications && (
-                        <NavLink to="/certifications" className="inline-flex items-center gap-1.5 text-accent text-sm font-semibold mt-2 group">
+                        <NavLink to="/certifications" className="glow-navlink inline-flex items-center gap-1.5 text-accent text-sm font-semibold mt-2 group">
                           View all certifications <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
                         </NavLink>
                       )}
@@ -116,7 +116,7 @@ export default function ResumePage() {
           {/* CHANGED: h-full + flex column with centered content, so the card
               stretches to match the left column's height (via items-stretch above)
               instead of sitting short at a fixed content height. */}
-          <div className="relative overflow-hidden bg-panel border border-panel-border rounded-3xl p-10 text-center flex flex-col items-center justify-center lg:h-full">
+          <div className="glow-card relative overflow-hidden bg-panel border border-panel-border rounded-3xl p-10 text-center flex flex-col items-center justify-center lg:h-full">
             {/* CHANGED: corner dot/line accents -> full-card generative network pattern
                 (same visual language as the site-wide NetworkBackground), clipped to the
                 card via the parent's overflow-hidden rounded-3xl. */}
@@ -137,7 +137,7 @@ export default function ResumePage() {
               {resumeSections.map((label) => (
                 <span
                   key={label}
-                  className="text-xs font-medium text-muted bg-bg-alt border border-panel-border rounded-full px-3.5 py-1.5"
+                  className="glow-badge text-xs font-medium text-muted bg-bg-alt border border-panel-border rounded-full px-3.5 py-1.5"
                 >
                   {label}
                 </span>
@@ -150,14 +150,14 @@ export default function ResumePage() {
                 href={profile.resumeFile}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 font-semibold text-sm px-4 py-3 rounded-full border border-panel-border text-text transition-colors hover:border-accent hover:text-accent"
+                className="glow-btn inline-flex items-center justify-center gap-2 font-semibold text-sm px-4 py-3 rounded-full border border-panel-border text-text hover:border-accent hover:text-accent"
               >
                 <Eye size={16} /> Open Preview
               </a>
               <a
                 href={profile.resumeFile}
                 download
-                className="inline-flex items-center justify-center gap-2 font-semibold text-sm px-4 py-3 rounded-full bg-accent text-[#06201d] transition-transform hover:-translate-y-0.5"
+                className="glow-btn inline-flex items-center justify-center gap-2 font-semibold text-sm px-4 py-3 rounded-full bg-accent text-[#06201d]"
               >
                 <Download size={16} /> Download Resume
               </a>

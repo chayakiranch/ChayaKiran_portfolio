@@ -49,7 +49,7 @@ export default function ExperienceDetails() {
   return (
     <div className="min-h-screen px-6 pt-16 pb-24">
       <div className="max-w-6xl mx-auto px-6">
-        <Link to="/experience" className="text-muted hover:text-accent text-sm">
+        <Link to="/experience" className="glow-navlink text-muted hover:text-accent text-sm">
           ← Back to Experience
         </Link>
 
@@ -62,7 +62,7 @@ export default function ExperienceDetails() {
 
           <div className="flex flex-wrap gap-3 mb-12">
             {experience.skills.map((skill, i) => (
-              <span key={i} className="bg-bg-alt px-3 py-1 rounded-lg text-sm text-text">
+              <span key={i} className="glow-badge bg-bg-alt px-3 py-1 rounded-lg text-sm text-text">
                 {skill}
               </span>
             ))}
@@ -114,7 +114,7 @@ export default function ExperienceDetails() {
                 <h2 className="text-3xl font-bold mb-6">Major Accomplishments</h2>
                 <div className="space-y-5">
                   {experience.achievements.map((item, i) => (
-                    <div key={i} className="bg-panel/80 border border-panel-border rounded-2xl p-6">
+                    <div key={i} className="glow-card bg-panel/80 border border-panel-border rounded-2xl p-6">
                       <span className="text-accent font-bold mr-4">0{i + 1}</span>
                       <span className="text-muted">{item}</span>
                     </div>
@@ -155,7 +155,7 @@ export default function ExperienceDetails() {
                       <Link
                         key={i}
                         to={`/projects/${project.id}`}
-                        className="block bg-bg-alt border border-accent-dim rounded-[32px] p-5 hover:border-accent hover:-translate-y-1 transition-all duration-300 min-h-[360px] flex flex-col justify-between"
+                        className="glow-card block bg-bg-alt border border-accent-dim rounded-[32px] p-5 min-h-[360px] flex flex-col justify-between"
                       >
                         <div className="flex items-center justify-between mb-6">
                           <span className="bg-accent/20 text-accent text-xs px-4 py-1 rounded-full font-medium">
@@ -167,7 +167,7 @@ export default function ExperienceDetails() {
                           <p className="text-muted text-sm leading-7 mb-7">{project.description}</p>
                           <div className="flex flex-wrap gap-2">
                             {project.technologies.map((tech, idx) => (
-                              <span key={idx} className="bg-panel-border text-muted text-xs px-3 py-1 rounded-lg">
+                              <span key={idx} className="glow-badge bg-panel-border text-muted text-xs px-3 py-1 rounded-lg">
                                 {tech}
                               </span>
                             ))}
@@ -195,7 +195,7 @@ export default function ExperienceDetails() {
       {/* PREVIOUS + NEXT */}
       <div className="border-t border-panel-border mt-24 pt-10 flex justify-between items-center px-4 md:px-20 max-w-6xl mx-auto">
         {previousExperience ? (
-          <Link to={`/experience/${previousExperience.id}`} className="group transition-all duration-300">
+          <Link to={`/experience/${previousExperience.id}`} className="glow-navlink group transition-all duration-300">
             <p className="text-muted-2 text-xs mb-1">Previous</p>
             <div className="flex items-center gap-3">
               <span className="text-muted-2 text-lg group-hover:text-accent transition-all duration-300">←</span>
@@ -209,7 +209,7 @@ export default function ExperienceDetails() {
         )}
 
         {nextExperience && (
-          <Link to={`/experience/${nextExperience.id}`} className="group transition-all duration-300">
+          <Link to={`/experience/${nextExperience.id}`} className="glow-navlink group transition-all duration-300">
             <p className="text-muted-2 text-xs mb-1 text-right">Next</p>
             <div className="flex items-center gap-3">
               <h3 className="text-lg text-muted group-hover:text-accent transition-all duration-300">

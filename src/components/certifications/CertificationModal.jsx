@@ -56,7 +56,7 @@ export default function CertificationModal({ cert, onClose }) {
                 type="button"
                 onClick={onClose}
                 aria-label="Close"
-                className="shrink-0 w-9 h-9 flex items-center justify-center rounded-lg border border-panel-border text-muted hover:text-text hover:border-accent transition-colors"
+                className="glow-icon glow-card shrink-0 w-9 h-9 flex items-center justify-center rounded-lg border border-panel-border text-muted hover:text-text"
               >
                 <X size={17} />
               </button>
@@ -68,7 +68,7 @@ export default function CertificationModal({ cert, onClose }) {
                 type="button"
                 onClick={() => setZoomed((z) => !z)}
                 aria-label={zoomed ? "Zoom out" : "Zoom in"}
-                className="absolute top-3 right-3 z-10 w-9 h-9 flex items-center justify-center rounded-lg bg-panel/90 border border-panel-border text-text hover:text-accent transition-colors"
+                className="glow-icon glow-card absolute top-3 right-3 z-10 w-9 h-9 flex items-center justify-center rounded-lg bg-panel/90 border border-panel-border text-text hover:text-accent"
               >
                 {zoomed ? <ZoomOut size={16} /> : <ZoomIn size={16} />}
               </button>
@@ -90,7 +90,7 @@ export default function CertificationModal({ cert, onClose }) {
               <a
                 href={cert.image}
                 download
-                className="inline-flex items-center gap-1.5 text-sm font-semibold px-4 py-2.5 rounded-full border border-panel-border text-text hover:border-accent hover:text-accent transition-colors"
+                className="glow-btn inline-flex items-center gap-1.5 text-sm font-semibold px-4 py-2.5 rounded-full border border-panel-border text-text hover:border-accent hover:text-accent"
               >
                 <Download size={15} /> Download
               </a>
@@ -99,7 +99,7 @@ export default function CertificationModal({ cert, onClose }) {
                   href={cert.credentialUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-sm font-semibold px-4 py-2.5 rounded-full bg-accent text-[#06201d] transition-transform hover:-translate-y-0.5"
+                  className="glow-btn inline-flex items-center gap-1.5 text-sm font-semibold px-4 py-2.5 rounded-full bg-accent text-[#06201d]"
                 >
                   Verify Credential <ExternalLink size={15} />
                 </a>

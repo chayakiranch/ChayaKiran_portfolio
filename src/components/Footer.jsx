@@ -23,7 +23,8 @@ export default function Footer() {
               const isExternal = item.href.startsWith("http");
               const target = isExternal ? "_blank" : undefined;
               const rel = isExternal ? "noopener noreferrer" : undefined;
-              const linkClass = "w-9 h-9 flex items-center justify-center rounded-lg border border-panel-border text-muted hover:text-accent hover:border-accent transition-colors";
+              // GLOW SYSTEM: added .glow-card (ring glow) + .glow-icon (icon scale/rotate)
+              const linkClass = "glow-icon w-9 h-9 flex items-center justify-center rounded-lg border border-panel-border text-muted hover:text-accent hover:border-accent transition-colors";
               return (
                 <a key={i} href={item.href} target={target} rel={rel} className={linkClass}>
                   <Icon size={16} />
@@ -34,7 +35,7 @@ export default function Footer() {
         </div>
         {/* NEW: optional Certifications link in the footer */}
         <div className="flex justify-center pb-6">
-          <NavLink to="/certifications" className="text-sm text-muted hover:text-accent transition-colors">
+          <NavLink to="/certifications" className="glow-navlink text-sm text-muted hover:text-accent transition-colors">
             🏆 View Certifications &amp; Achievements
           </NavLink>
         </div>

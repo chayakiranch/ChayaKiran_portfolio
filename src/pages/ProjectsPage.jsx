@@ -15,7 +15,7 @@ export default function ProjectsPage() {
             <NavLink
               key={p.id}
               to={`/projects/${p.id}`}
-              className="block bg-panel border border-panel-border rounded-2xl p-8 transition-all hover:-translate-y-1 hover:border-accent-dim"
+              className="glow-card block bg-panel border border-panel-border rounded-2xl p-8"
             >
               <div className="flex items-center justify-between mb-4">
                 <span className="font-mono text-[0.75rem] text-accent uppercase tracking-wide">{p.kicker}</span>

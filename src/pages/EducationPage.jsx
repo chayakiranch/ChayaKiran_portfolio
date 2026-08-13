@@ -22,7 +22,7 @@ export default function EducationPage() {
               <div key={edu.id} className="relative">
                 <span className="absolute -left-[33px] top-6 w-2.5 h-2.5 rounded-full bg-accent" />
 
-                <div className="bg-panel border border-panel-border rounded-2xl p-7">
+                <div className="glow-card bg-panel border border-panel-border rounded-2xl p-7">
                   <div className="flex items-start justify-between gap-4 flex-wrap">
                     <div className="flex items-center gap-2.5">
                       <GraduationCap size={18} className="text-accent" />

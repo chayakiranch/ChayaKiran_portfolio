@@ -18,7 +18,7 @@ export default function ExperiencePage() {
               <div className="absolute left-0 top-5 w-3 h-3 rounded-full bg-accent" />
 
               <Link to={`/experience/${exp.id}`} className="block">
-                <div className="bg-panel/80 border border-panel-border rounded-2xl p-5 hover:border-accent hover:-translate-y-1 transition-all duration-300 cursor-pointer">
+                <div className="glow-card bg-panel/80 border border-panel-border rounded-2xl p-5 cursor-pointer">
                   <div className="flex justify-between items-start mb-5 flex-wrap gap-2">
                     <div>
                       <h2 className="text-xl md:text-2xl font-bold">{exp.role}</h2>
@@ -39,7 +39,7 @@ export default function ExperiencePage() {
 
                   <div className="flex flex-wrap gap-2 mb-5">
                     {exp.skills.map((skill, i) => (
-                      <span key={i} className="bg-bg-alt px-3 py-1.5 rounded-lg text-sm text-muted">
+                      <span key={i} className="glow-badge bg-bg-alt px-3 py-1.5 rounded-lg text-sm text-muted">
                         {skill}
                       </span>
                     ))}

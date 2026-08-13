@@ -11,7 +11,7 @@ export default function CertificationCard({ cert, onView }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: 0.4, ease: "easeOut" }}
-      className="group bg-panel/70 backdrop-blur-md border border-panel-border rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:border-accent-dim hover:shadow-[0_18px_40px_-20px_rgba(79,209,197,0.35)]"
+      className="glow-card group bg-panel/70 backdrop-blur-md border border-panel-border rounded-2xl overflow-hidden"
     >
       <button
         type="button"
@@ -42,7 +42,7 @@ export default function CertificationCard({ cert, onView }) {
             href={cert.credentialUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 text-sm font-semibold text-accent hover:text-text transition-colors mt-4"
+            className="glow-navlink inline-flex items-center gap-1 text-sm font-semibold text-accent hover:text-text transition-colors mt-4"
           >
             Verify Credential →
           </a>

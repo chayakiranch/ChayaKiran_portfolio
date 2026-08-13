@@ -33,23 +33,24 @@ export default function Hero() {
           to MERN-stack products that ship.
         </p>
 
+        {/* GLOW SYSTEM: added .glow-btn to all 3 CTAs for unified lift+glow */}
         <div className="flex gap-4 mt-10 flex-wrap">
           <NavLink
             to="/projects"
-            className="inline-flex items-center justify-center font-semibold text-[0.95rem] px-[26px] py-3.5 rounded-full bg-accent text-[#06201d] transition-transform hover:-translate-y-0.5"
+            className="glow-btn inline-flex items-center justify-center font-semibold text-[0.95rem] px-[26px] py-3.5 rounded-full bg-accent text-[#06201d]"
           >
             View Projects
           </NavLink>
           <NavLink
             to="/resume"
-            className="inline-flex items-center justify-center font-semibold text-[0.95rem] px-[26px] py-3.5 rounded-full border border-panel-border text-text transition-all hover:-translate-y-0.5 hover:border-accent hover:text-accent"
+            className="glow-btn inline-flex items-center justify-center font-semibold text-[0.95rem] px-[26px] py-3.5 rounded-full border border-panel-border text-text hover:border-accent hover:text-accent"
           >
             View Resume
           </NavLink>
           {/* NEW: CTA to the Certifications & Achievements page */}
           <NavLink
             to="/certifications"
-            className="inline-flex items-center justify-center font-semibold text-[0.95rem] px-[26px] py-3.5 rounded-full border border-panel-border text-text transition-all hover:-translate-y-0.5 hover:border-accent hover:text-accent"
+            className="glow-btn inline-flex items-center justify-center font-semibold text-[0.95rem] px-[26px] py-3.5 rounded-full border border-panel-border text-text hover:border-accent hover:text-accent"
           >
             View Certifications
           </NavLink>

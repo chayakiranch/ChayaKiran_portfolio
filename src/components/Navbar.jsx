@@ -66,8 +66,9 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // GLOW SYSTEM: added .glow-navlink for an animated underline glow on hover
   const linkClass = ({ isActive }) =>
-    `px-5 py-2.5 rounded-full text-sm font-medium transition-colors whitespace-nowrap ${
+    `glow-navlink px-5 py-2.5 rounded-full text-sm font-medium transition-colors whitespace-nowrap ${
       isActive ? "bg-accent/20 text-accent" : "text-muted hover:text-text"
     }`;
 

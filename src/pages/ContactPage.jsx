@@ -37,7 +37,7 @@ export default function ContactPage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="bg-panel border border-panel-border rounded-3xl p-8">
+          <div className="glow-card bg-panel border border-panel-border rounded-3xl p-8">
             <h2 className="font-display text-2xl font-bold mb-6">Connect</h2>
             <div className="flex flex-col gap-4">
               {contactLinks.map((item, i) => {
@@ -45,10 +45,10 @@ export default function ContactPage() {
                 const isExternal = item.href.startsWith("http");
                 const target = isExternal ? "_blank" : undefined;
                 const rel = isExternal ? "noopener noreferrer" : undefined;
-                const rowClass = "flex items-center gap-3 min-w-0 bg-bg-alt border border-panel-border rounded-xl px-5 py-4 text-sm text-text hover:border-accent transition-colors";
+                const rowClass = "glow-card flex items-center gap-3 min-w-0 bg-bg-alt border border-panel-border rounded-xl px-5 py-4 text-sm text-text";
                 return (
                   <a key={i} href={item.href} target={target} rel={rel} className={rowClass}>
-                    <Icon size={17} className="text-muted shrink-0" />
+                    <Icon size={17} className="glow-icon text-muted shrink-0" />
                     <span className="truncate min-w-0 flex-1">{item.label}</span>
                   </a>
                 );
@@ -56,7 +56,7 @@ export default function ContactPage() {
             </div>
           </div>
 
-          <div className="bg-panel border border-panel-border rounded-3xl p-8">
+          <div className="glow-card bg-panel border border-panel-border rounded-3xl p-8">
             <form onSubmit={handleSubmit} className="flex flex-col gap-5">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <Field label="Name" name="name" value={form.name} onChange={handleChange} placeholder="Your name" />
@@ -65,9 +65,9 @@ export default function ContactPage() {
               <Field label="Subject" name="subject" value={form.subject} onChange={handleChange} placeholder="What's this about?" />
               <div className="flex flex-col gap-2">
                 <label htmlFor="message" className="text-sm font-semibold text-text">Message</label>
-                <textarea id="message" name="message" rows={5} required value={form.message} onChange={handleChange} placeholder="Have a project or idea? Let's connect and bring it to life together." className="bg-bg-alt border border-panel-border rounded-xl px-4 py-3.5 text-text placeholder:text-muted-2 focus:border-accent focus:outline-none resize-y" />
+                <textarea id="message" name="message" rows={5} required value={form.message} onChange={handleChange} placeholder="Have a project or idea? Let's connect and bring it to life together." className="glow-input bg-bg-alt border border-panel-border rounded-xl px-4 py-3.5 text-text placeholder:text-muted-2 focus:outline-none resize-y" />
               </div>
-              <button type="submit" className="self-start font-semibold text-[0.95rem] px-7 py-3.5 rounded-full bg-accent text-[#06201d] transition-transform hover:-translate-y-0.5">Send Message</button>
+              <button type="submit" className="glow-btn self-start font-semibold text-[0.95rem] px-7 py-3.5 rounded-full bg-accent text-[#06201d]">Send Message</button>
               {note && <p className="text-accent text-sm">{note}</p>}
             </form>
           </div>
@@ -82,7 +82,7 @@ function Field({ label, name, type, value, onChange, placeholder }) {
   return (
     <div className="flex flex-col gap-2">
       <label htmlFor={name} className="text-sm font-semibold text-text">{label}</label>
-      <input id={name} name={name} type={inputType} required value={value} onChange={onChange} placeholder={placeholder} className="bg-bg-alt border border-panel-border rounded-xl px-4 py-3.5 text-text placeholder:text-muted-2 focus:border-accent focus:outline-none" />
+      <input id={name} name={name} type={inputType} required value={value} onChange={onChange} placeholder={placeholder} className="glow-input bg-bg-alt border border-panel-border rounded-xl px-4 py-3.5 text-text placeholder:text-muted-2 focus:outline-none" />
     </div>
   );
 }

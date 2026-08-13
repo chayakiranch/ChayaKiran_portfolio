@@ -16,14 +16,11 @@ export default function SkillCard({ category, icon, items }) {
   const Icon = ICON_MAP[icon] ?? Code2;
 
   return (
-    // SIZE REDUCED: p-8 -> p-5, rounded-2xl -> rounded-xl, lift/shadow toned down slightly
+    // GLOW SYSTEM: unified via .glow-card (see index.css)
     <div
-      className="group flex flex-col h-full bg-[#111827]/60 backdrop-blur-xl
+      className="glow-card group flex flex-col h-full bg-[#111827]/60 backdrop-blur-xl
                  border border-white/[0.08] rounded-xl p-5
-                 shadow-md shadow-black/20
-                 transition-all duration-300 ease-out
-                 hover:-translate-y-1 hover:border-accent/40
-                 hover:shadow-xl hover:shadow-accent/10"
+                 shadow-md shadow-black/20"
     >
       {/* SIZE REDUCED: gap-3.5 mb-6 -> gap-2.5 mb-4 */}
       <div className="flex items-center gap-2.5 mb-4">

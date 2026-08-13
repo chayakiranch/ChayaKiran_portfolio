@@ -23,7 +23,7 @@ export default function ProjectDetails() {
   return (
     <section className="py-24">
       <div className="max-w-[820px] mx-auto px-6 md:px-8">
-        <NavLink to="/projects" className="inline-flex items-center gap-1.5 text-muted text-sm mb-8 hover:text-accent">
+        <NavLink to="/projects" className="glow-navlink inline-flex items-center gap-1.5 text-muted text-sm mb-8 hover:text-accent">
           <ArrowLeft size={15} /> Back to projects
         </NavLink>
 
@@ -67,7 +67,7 @@ export default function ProjectDetails() {
 
         <div className="flex gap-3 flex-wrap">
           {project.liveUrl ? (
-            <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-semibold px-5 py-3 rounded-full bg-accent text-[#06201d]">
+            <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="glow-btn inline-flex items-center gap-2 text-sm font-semibold px-5 py-3 rounded-full bg-accent text-[#06201d]">
               <ExternalLink size={15} /> Live demo
             </a>
           ) : (
@@ -76,7 +76,7 @@ export default function ProjectDetails() {
             </span>
           )}
           {project.repoUrl ? (
-            <a href={project.repoUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-semibold px-5 py-3 rounded-full border border-panel-border text-text">
+            <a href={project.repoUrl} target="_blank" rel="noopener noreferrer" className="glow-btn inline-flex items-center gap-2 text-sm font-semibold px-5 py-3 rounded-full border border-panel-border text-text hover:border-accent">
               <Github size={15} /> Source code
             </a>
           ) : (
