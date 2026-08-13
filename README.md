@@ -19,10 +19,9 @@
 
 ## ✨ Overview
 
-This is the source code for my personal developer portfolio — a fast, fully responsive single-page application showcasing my experience, projects, education, skills, and certifications. It's built as a static React SPA (no backend) and deployed on Vercel.
+This portfolio represents my journey as a Computer Science Engineering student specializing in Cloud and Edge Computing. It showcases my work in cloud-based applications, full-stack web development, cloud cost optimization, interactive dashboards, and modern software engineering projects.
 
-The site features an animated node-network background, glassmorphism cards with hover-glow effects, and smooth page transitions throughout, all built with a consistent design system defined in Tailwind and CSS custom properties. Every piece of content — projects, experience, certifications — lives in plain data files, so the site can grow without touching component code.
-
+Built with React, Vite, and Tailwind CSS, the portfolio features a responsive dark-themed interface with an animated node-network background, glassmorphism components, smooth animations, and a fully data-driven architecture. It is designed to provide recruiters, collaborators, and visitors with a fast, engaging, and professional experience while making it easy to maintain and expand.
 <br/>
 
 ## 💡 Why This Portfolio?
