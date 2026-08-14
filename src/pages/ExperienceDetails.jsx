@@ -149,7 +149,7 @@ export default function ExperienceDetails() {
               <section id="projects" className="mb-16 scroll-mt-32">
                 <h2 className="text-3xl font-bold mb-6">Projects</h2>
 
-                {experience.projects.length > 0 ? (
+                {experience.projects.length > 0 || experience.credentialUrl ? (
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {experience.projects.map((project, i) => (
                       <Link
@@ -180,6 +180,51 @@ export default function ExperienceDetails() {
                         </div>
                       </Link>
                     ))}
+
+                    {/* CERTIFICATE — back beside the project card in the same grid, with a
+                        headline ("Certificate of Virtual Internship") at the top of the card
+                        itself, mirroring the "completed" badge + title pattern on the project
+                        card. The PDF file is untouched — the headline lives only in this UI. */}
+                    {experience.credentialUrl && (
+                      <a
+                        href={experience.credentialUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="glow-card block bg-bg-alt border border-accent-dim rounded-[32px] p-5 min-h-[360px] flex flex-col justify-between"
+                      >
+                        <div>
+                          <div className="flex items-center justify-between mb-6">
+                            <span className="bg-accent/20 text-accent text-xs px-4 py-1 rounded-full font-medium">
+                              certificate
+                            </span>
+                            {experience.credentialIssueDate && (
+                              <span className="text-muted-2 text-xs">{experience.credentialIssueDate}</span>
+                            )}
+                          </div>
+
+                          {/* Headline — bigger/bolder repeat of the certificate's own title */}
+                          <h3 className="text-2xl font-bold text-text leading-tight mb-5">
+                            Certificate of Virtual Internship
+                          </h3>
+
+                          {experience.credentialImage && (
+                            <div className="bg-white rounded-xl p-2 flex items-center justify-center">
+                              <img
+                                src={experience.credentialImage}
+                                alt={`${experience.company} internship certificate`}
+                                loading="lazy"
+                                className="max-h-[170px] w-auto object-contain rounded-md"
+                              />
+                            </div>
+                          )}
+                        </div>
+                        <div className="border-t border-panel-border mt-8 pt-5">
+                          <p className="text-accent text-sm font-semibold flex items-center gap-2">
+                            View Certificate <span className="text-lg">↗</span>
+                          </p>
+                        </div>
+                      </a>
+                    )}
                   </div>
                 ) : (
                   <div className="border border-dashed border-panel-border rounded-2xl p-8 text-center text-muted-2 text-sm">

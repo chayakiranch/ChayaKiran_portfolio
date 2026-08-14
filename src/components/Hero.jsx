@@ -4,8 +4,8 @@ import profile from "../data/profileData";
 const stats = [
   { num: "7.88", label: "CGPA · B.Tech CSE" },
   { num: "5", label: "Cloud & AI certifications" }, // CHANGED: 4 -> 5 to match certificationsData.js
-  { num: "2", label: "Full-stack products shipped" },
-  { num: "6wk", label: "MERN internship @ Vehinova" },
+  { num: "3", label: "Full-stack products shipped" }, // CHANGED: 2 -> 3 to match projectsData.js
+  { num: "6wk", label: "Technical internship @ Vehinova" }, // CHANGED: "MERN" removed — Vehinova internship was Python/Django, per certificate (45 days ≈ 6.4 weeks, confirms 6wk)
 ];
 
 export default function Hero() {

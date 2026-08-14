@@ -10,7 +10,7 @@ const educationData = [
     highlights: [
       "Specializing in Cloud and Edge Computing, covering AWS architecture, cloud-native design, and distributed systems.",
       "Built full-stack MERN and Django projects applying database, API, and UI design principles.",
-      "Completed a summer internship in MERN stack development at Vehinova Technologies.",
+      "Completed a summer internship in Python & Django web development at Vehinova Technologies.", // CORRECTED: was "MERN stack" — internship used Python/Django per certificate + experienceData.js
       "Participated in hackathons and coding challenges on HackerRank and LeetCode.",
     ],
   },

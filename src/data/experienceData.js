@@ -4,7 +4,11 @@ const experienceData = [
     role: "Python Web Development Intern",
     company: "Vehinova",
     location: "Remote",
-    duration: "May 2024 — Jul 2024",
+    duration: "May 2024 — Jun 2024 (45 days)",
+
+    credentialUrl: "/experience/vehinova-internship-certificate.pdf", // NEW: internship certificate, shown as a card beside the project in "Projects at Vehinova"
+    credentialImage: "/experience/vehinova-internship.jpg",
+    credentialIssueDate: "June 2024",
 
     skills: ["Python", "Django", "PostgreSQL", "HTML", "CSS", "Bootstrap"],
 

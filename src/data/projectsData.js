@@ -3,6 +3,7 @@ const projectsData = [
     id: "online-book-store",
     title: "Online Book Store",
     kicker: "Full-stack · E-commerce",
+    status: "completed",
     duration: "Jul 2023 – Nov 2023",
     summary:
       "A scalable full-stack e-commerce platform built with React.js, Node.js and Express.js, focused on load efficiency and responsiveness.",
@@ -23,6 +24,7 @@ const projectsData = [
     id: "online-blogging-system",
     title: "Online Blogging System",
     kicker: "Full-stack · Publishing",
+    status: "completed",
     duration: "Dec 2023 – Apr 2024",
     summary:
       "A full-featured blogging platform with modules for user registration, post creation and commenting, built on the Django framework.",
@@ -43,6 +45,7 @@ const projectsData = [
     id: "aws-billing-dashboard",
     title: "AWS Cloud Billing & Resource Dashboard",
     kicker: "Cloud & Edge Computing · Full-stack",
+    status: "completed",
     duration: "Mar 2026 – Apr 2026",
     summary:
       "A full-stack cloud cost-management platform that connects directly to a user's AWS account and turns raw Cost Explorer, CloudWatch, and resource-inventory data into an interactive billing dashboard — with cost forecasting, performance monitoring, and automated savings recommendations.",
