@@ -16,8 +16,8 @@ export default function Home() {
       {/* ABOUT */}
       <section className="py-24 border-t border-panel-border">
         <div className="max-w-[1120px] mx-auto px-6 md:px-8">
-          <p className="flex items-center gap-2.5 font-mono text-[0.78rem] tracking-[0.12em] uppercase text-accent mb-5">
-            <span className="font-mono text-[0.72rem] text-muted-2 border border-panel-border rounded px-1.5 py-0.5">01</span>
+          {/* CHANGED: numbered badge removed, eyebrow centered */}
+          <p className="text-center font-mono text-[0.78rem] tracking-[0.12em] uppercase text-accent mb-5">
             About
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
@@ -39,16 +39,18 @@ export default function Home() {
       {/* SIZE REDUCED: py-28 -> py-20, heading margins tightened, grid gap-8 -> gap-5 */}
       <section className="py-20 border-t border-panel-border relative">
         <div className="max-w-[1120px] mx-auto px-6 md:px-8">
-          <p className="flex items-center gap-2.5 font-mono text-[0.78rem] tracking-[0.12em] uppercase text-accent mb-5">
-            <span className="font-mono text-[0.72rem] text-muted-2 border border-panel-border rounded px-1.5 py-0.5">02</span>
-            Skills
-          </p>
-          <h2 className="font-display font-semibold text-[clamp(1.9rem,3.4vw,2.75rem)] leading-tight tracking-tight mb-2.5">
-            Technical Expertise
-          </h2>
-          <p className="text-muted text-[1.05rem] max-w-[620px] mb-10">
-            Technologies and tools I work with.
-          </p>
+          {/* CHANGED: numbered badge removed; eyebrow, title, lead now centered */}
+          <div className="text-center mb-10">
+            <p className="font-mono text-[0.78rem] tracking-[0.12em] uppercase text-accent mb-5">
+              Skills
+            </p>
+            <h2 className="font-display font-semibold text-[clamp(1.9rem,3.4vw,2.75rem)] leading-tight tracking-tight mb-2.5">
+              Technical Expertise
+            </h2>
+            <p className="text-muted text-[1.05rem] max-w-[620px] mx-auto">
+              Technologies and tools I work with.
+            </p>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {skillsData.map((group) => (
@@ -66,12 +68,12 @@ export default function Home() {
       {/* EXPERIENCE — same timeline-card design as the Experience page */}
       <section className="py-24 border-t border-panel-border">
         <div className="max-w-[1120px] mx-auto px-6 md:px-8">
-          <p className="flex items-center gap-2.5 font-mono text-[0.78rem] tracking-[0.12em] uppercase text-accent mb-5">
-            <span className="font-mono text-[0.72rem] text-muted-2 border border-panel-border rounded px-1.5 py-0.5">03</span>
-            Experience
-          </p>
-          <div className="flex items-end justify-between flex-wrap gap-4 mb-12">
-            <h2 className="font-display font-semibold text-[clamp(1.9rem,3.4vw,2.75rem)] leading-tight tracking-tight">
+          {/* CHANGED: numbered badge removed; eyebrow, title, and link now centered/stacked */}
+          <div className="text-center mb-12">
+            <p className="font-mono text-[0.78rem] tracking-[0.12em] uppercase text-accent mb-5">
+              Experience
+            </p>
+            <h2 className="font-display font-semibold text-[clamp(1.9rem,3.4vw,2.75rem)] leading-tight tracking-tight mb-4">
               Where I've worked.
             </h2>
             <NavLink to="/experience" className="glow-navlink inline-flex items-center gap-1.5 text-accent text-sm font-semibold group">
@@ -131,12 +133,12 @@ export default function Home() {
       {/* PROJECTS */}
       <section className="py-24 border-t border-panel-border">
         <div className="max-w-[1120px] mx-auto px-6 md:px-8">
-          <p className="flex items-center gap-2.5 font-mono text-[0.78rem] tracking-[0.12em] uppercase text-accent mb-5">
-            <span className="font-mono text-[0.72rem] text-muted-2 border border-panel-border rounded px-1.5 py-0.5">04</span>
-            Projects
-          </p>
-          <div className="flex items-end justify-between flex-wrap gap-4 mb-12">
-            <h2 className="font-display font-semibold text-[clamp(1.9rem,3.4vw,2.75rem)] leading-tight tracking-tight">
+          {/* CHANGED: numbered badge removed; eyebrow, title, and link now centered/stacked */}
+          <div className="text-center mb-12">
+            <p className="font-mono text-[0.78rem] tracking-[0.12em] uppercase text-accent mb-5">
+              Projects
+            </p>
+            <h2 className="font-display font-semibold text-[clamp(1.9rem,3.4vw,2.75rem)] leading-tight tracking-tight mb-4">
               Things I've built.
             </h2>
             <NavLink to="/projects" className="glow-navlink inline-flex items-center gap-1.5 text-accent text-sm font-semibold group">

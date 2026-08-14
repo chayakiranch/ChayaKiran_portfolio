@@ -8,7 +8,7 @@ export default function ProjectsPage() {
   return (
     <section className="py-24">
       <div className="max-w-[1120px] mx-auto px-6 md:px-8">
-        <SectionHeading tag="03" eyebrow="Projects" title="Things I've built" />
+        <SectionHeading eyebrow="Projects" title="Things I've built" />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
           {projectsData.map((p) => (
