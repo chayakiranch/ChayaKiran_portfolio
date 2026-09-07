@@ -4,7 +4,7 @@ const experienceData = [
     role: "Python Web Development Intern",
     company: "Vehinova",
     location: "Remote",
-    duration: "May 2024 — Jun 2024 (45 days)",
+    duration: "May 2024 — Jun 2024 (6 weeks)", // FIXED: "(45 days)" -> "(6 weeks)" (Task 10)
 
     credentialUrl: "/experience/vehinova-internship-certificate.pdf", // NEW: internship certificate, shown as a card beside the project in "Projects at Vehinova"
     credentialImage: "/experience/vehinova-internship.jpg",
@@ -12,50 +12,57 @@ const experienceData = [
 
     skills: ["Python", "Django", "PostgreSQL", "HTML", "CSS", "Bootstrap"],
 
+    // POLISHED: shortPoints rewritten for stronger, more impactful phrasing (Task 14)
     shortPoints: [
-      "Developed an online blogging system using Django.",
-      "Built authentication and blog management features.",
-      "Integrated PostgreSQL database management.",
-      "Designed responsive frontend pages.",
+      "Engineered a full-stack blogging platform end-to-end using Django, from data models to deployment.",
+      "Delivered secure authentication and blog-management workflows for a smooth content experience.",
+      "Architected the PostgreSQL data layer, powering reliable content and user-account storage.",
+      "Crafted responsive, cross-device frontend pages that kept usability front and center.",
     ],
 
+    // POLISHED: overview rewritten for more professional, impactful tone (Task 14)
     overview:
-      "During my internship at Vehinova, I contributed to the development of full-stack web applications focused on scalable backend systems, responsive user interfaces, and secure database-driven workflows. My work involved building dynamic platforms using Django, PostgreSQL, and modern web technologies while strengthening practical experience in authentication systems, CRUD operations, API integration, and real-world software development practices.",
+      "At Vehinova, I built full-stack web applications end-to-end, owning everything from scalable backend architecture to responsive, user-facing interfaces and secure, database-driven workflows. Working hands-on with Django, PostgreSQL, and modern web technologies, I shipped production-style features spanning authentication, CRUD operations, and API integration — turning six weeks of intensive, real-world development into a solid foundation in shipping software that works.",
 
+    // POLISHED: responsibilities rewritten with stronger action verbs (Task 14)
     responsibilities: [
-      "Developed and maintained full-stack web applications using Django, PostgreSQL, HTML, CSS, and Bootstrap",
-      "Implemented authentication systems, CRUD operations, and responsive UI components for dynamic user experiences",
-      "Integrated backend logic with database workflows to manage secure content handling and application functionality",
-      "Collaborated on debugging, testing, and optimizing application performance across different modules and features",
+      "Built and maintained full-stack web applications using Django, PostgreSQL, HTML, CSS, and Bootstrap",
+      "Shipped authentication systems, CRUD operations, and responsive UI components that powered dynamic user experiences",
+      "Connected backend logic to database workflows, ensuring secure and reliable content handling across the application",
+      "Debugged, tested, and optimized application performance to keep every module running smoothly",
     ],
 
+    // POLISHED: achievements rewritten for stronger impact (Task 14)
     achievements: [
-      "Developed a full-stack Online Blogging System using Django and PostgreSQL with secure authentication, CRUD workflows, and responsive user interfaces.",
-      "Built dynamic backend modules for content management, database integration, and user interaction handling across multiple application features.",
-      "Implemented responsive frontend designs using Bootstrap, HTML, and CSS to improve accessibility and seamless user experience across devices.",
-      "Strengthened practical expertise in backend development, debugging, database operations, and real-world software deployment workflows.",
+      "Delivered a full-stack Online Blogging System from the ground up using Django and PostgreSQL, complete with secure authentication, CRUD workflows, and a polished user interface.",
+      "Engineered backend modules powering content management, database integration, and user interaction across the platform's core features.",
+      "Translated designs into responsive, accessible frontends with Bootstrap, HTML, and CSS — consistent across every device.",
+      "Built a strong foundation in backend development, debugging, database operations, and real-world software deployment.",
     ],
 
+    // POLISHED: systems descriptions tightened for impact (Task 14)
     systems: [
       "Online Blogging System (Django, PostgreSQL, Bootstrap, HTML, CSS)",
-      "User authentication and authorization workflows with secure login and registration systems",
-      "Dynamic blog management modules with CRUD operations, category handling, and responsive UI integration",
-      "Database-driven content management system with PostgreSQL and Django ORM for scalable backend operations",
+      "Secure login and registration workflows for user authentication and authorization",
+      "Dynamic blog-management module with CRUD operations, category handling, and a responsive UI",
+      "Database-driven content system built on PostgreSQL and Django ORM for scalable backend operations",
     ],
 
+    // POLISHED: highlights tightened for impact (Task 14)
     highlights: [
-      "Full-stack web development using Django, PostgreSQL, Bootstrap, HTML, and CSS with scalable backend integration",
-      "Secure authentication workflows with validated login, registration, session management, and protected user access control",
-      "Dynamic CRUD operations for blog creation, editing, publishing, and database-driven content management systems",
-      "Responsive UI implementation and optimized frontend rendering for seamless cross-device user experiences",
+      "Full-stack web development with Django, PostgreSQL, Bootstrap, HTML, and CSS, built on a scalable backend",
+      "Secure authentication workflows spanning login, registration, session management, and access control",
+      "Dynamic CRUD operations powering blog creation, editing, publishing, and content management",
+      "Responsive UI implementation with optimized rendering across devices",
     ],
 
     projects: [
       {
         id: "online-blogging-system",
         title: "Online Blogging System",
+        // POLISHED: project description tightened for impact (Task 14)
         description:
-          "A scalable full-stack blogging platform designed for secure content publishing, responsive user experiences, and dynamic blog management workflows with database-driven architecture.",
+          "A full-stack blogging platform built for secure content publishing, a smooth user experience, and dynamic blog-management workflows on a database-driven architecture.",
         technologies: ["Django", "Python", "PostgreSQL", "Bootstrap", "HTML/CSS", "Django ORM"],
       },
     ],

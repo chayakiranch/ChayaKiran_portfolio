@@ -6,11 +6,11 @@ const educationData = [
     institution: "Koneru Lakshmaiah University",
     location: "Guntur, India",
     score: "7.88", // FIXED: "CGPA 7.88 / 10" -> "7.88" (Task 6, label added in Home.jsx render)
-    years: "2022 — In Progress",
+    years: "2022 — 2026", // FIXED: "2022 — In Progress" -> "2022 — 2026" (Task 11)
     highlights: [
       "Specializing in Cloud and Edge Computing, covering AWS architecture, cloud-native design, and distributed systems.",
       "Built full-stack MERN and Django projects applying database, API, and UI design principles.",
-      "Completed a summer internship in Python & Django web development at Vehinova Technologies.", // CORRECTED: was "MERN stack" — internship used Python/Django per certificate + experienceData.js
+      "Completed summer internship in Python & Django web development at Vehinova Technologies.", // FIXED: "Completed a summer internship" -> "Completed summer internship" (Task 13)
       "Participated in hackathons and coding challenges on HackerRank and LeetCode.",
     ],
   },
