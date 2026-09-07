@@ -40,7 +40,7 @@ export default function EducationPage() {
                     <MapPin size={12} />
                     {edu.location}
                     <span className="mx-1">·</span>
-                    {edu.score.includes("%") ? "Score" : "GPA"}: {edu.score}
+                    {edu.score.includes("%") ? "Score" : "CGPA"}: {edu.score} {/* FIXED: "GPA" -> "CGPA" (Task 6) */}
                   </div>
 
                   <ul className="mt-5 flex flex-col gap-2.5">

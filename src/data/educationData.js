@@ -5,7 +5,7 @@ const educationData = [
     field: "Computer Science & Engineering — Cloud and Edge Computing",
     institution: "Koneru Lakshmaiah University",
     location: "Guntur, India",
-    score: "CGPA 7.88 / 10",
+    score: "7.88", // FIXED: "CGPA 7.88 / 10" -> "7.88" (Task 6, label added in Home.jsx render)
     years: "2022 — In Progress",
     highlights: [
       "Specializing in Cloud and Edge Computing, covering AWS architecture, cloud-native design, and distributed systems.",
