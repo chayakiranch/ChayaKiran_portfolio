@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { Mail, Phone, Linkedin, Github } from "lucide-react";
+import { Mail, Linkedin, Github } from "lucide-react"; // FIXED: Phone icon import removed
 import profile from "../data/profileData";
 
 const contactLinks = [
   { icon: Mail, label: profile.email, href: `mailto:${profile.email}` },
-  { icon: Phone, label: profile.phone, href: `tel:${profile.phone.replace(/\s/g, "")}` },
+  // REMOVED: Phone contact link deleted per request (mobile number removed from whole project)
   { icon: Linkedin, label: profile.socials.linkedin || "Add your LinkedIn URL", href: profile.socials.linkedin || "#" },
   { icon: Github, label: profile.socials.github || "Add your GitHub URL", href: profile.socials.github || "#" },
 ];

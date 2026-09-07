@@ -26,7 +26,7 @@ export default function AboutPage() {
               <Fact label="Location" value={profile.location} />
               <Fact label="Focus" value="Cloud & Edge Computing" />
               <Fact label="Currently" value="B.Tech CSE, final year (2022–2026)" />
-              <Fact label="Phone" value={profile.phone} />
+              {/* REMOVED: Phone fact row deleted per request (mobile number removed from whole project) */}
               <Fact label="Email" value={profile.email} />
             </div>
 
