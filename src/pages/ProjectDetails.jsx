@@ -1,11 +1,16 @@
 import { useParams, NavLink } from "react-router-dom";
-import { ArrowLeft, ExternalLink, Github, Image as ImageIcon } from "lucide-react";
+import { ArrowLeft, ArrowRight, ExternalLink, Github, Image as ImageIcon } from "lucide-react"; // UPDATED: added ArrowRight for Task 16
 import Chip from "../components/Chip";
 import projectsData from "../data/projectsData";
 
 export default function ProjectDetails() {
   const { id } = useParams();
   const project = projectsData.find((p) => p.id === id);
+  // NEW (Task 16): find this project's index to compute prev/next neighbors
+  const currentIndex = projectsData.findIndex((p) => p.id === id);
+  const prevProject = currentIndex > 0 ? projectsData[currentIndex - 1] : null;
+  const nextProject =
+    currentIndex >= 0 && currentIndex < projectsData.length - 1 ? projectsData[currentIndex + 1] : null;
 
   if (!project) {
     return (
@@ -23,9 +28,14 @@ export default function ProjectDetails() {
   return (
     <section className="py-24">
       <div className="max-w-[820px] mx-auto px-6 md:px-8">
-        <NavLink to="/projects" className="glow-navlink inline-flex items-center gap-1.5 text-muted text-sm mb-8 hover:text-accent">
-          <ArrowLeft size={15} /> Back to projects
-        </NavLink>
+        {/* FIXED (Task 17): Back link wrapped in a block-level div so the kicker/title
+            block below always starts on a new line, instead of a bare inline-flex
+            NavLink that could sit on the same line as the next inline content. */}
+        <div className="mb-8">
+          <NavLink to="/projects" className="glow-navlink inline-flex items-center gap-1.5 text-muted text-sm hover:text-accent">
+            <ArrowLeft size={15} /> Back to projects
+          </NavLink>
+        </div>
 
         <span className="font-mono text-[0.75rem] text-accent uppercase tracking-wide">{project.kicker}</span>
         <h1 className="font-display font-semibold text-[clamp(1.8rem,3.4vw,2.5rem)] leading-tight mt-3">
@@ -85,6 +95,36 @@ export default function ProjectDetails() {
             </span>
           )}
         </div>
+
+        {/* NEW (Task 16): Previous/Next project navigation */}
+        {(prevProject || nextProject) && (
+          <div className="flex justify-between gap-4 mt-14 pt-8 border-t border-panel-border">
+            {prevProject ? (
+              <NavLink
+                to={`/projects/${prevProject.id}`}
+                className="glow-navlink flex flex-col items-start gap-1 text-left max-w-[45%]"
+              >
+                <span className="inline-flex items-center gap-1.5 text-muted-2 text-xs uppercase tracking-wide">
+                  <ArrowLeft size={13} /> Previous Project
+                </span>
+                <span className="text-text text-sm font-semibold truncate">{prevProject.title}</span>
+              </NavLink>
+            ) : (
+              <span />
+            )}
+            {nextProject && (
+              <NavLink
+                to={`/projects/${nextProject.id}`}
+                className="glow-navlink flex flex-col items-end gap-1 text-right max-w-[45%] ml-auto"
+              >
+                <span className="inline-flex items-center gap-1.5 text-muted-2 text-xs uppercase tracking-wide">
+                  Next Project <ArrowRight size={13} />
+                </span>
+                <span className="text-text text-sm font-semibold truncate">{nextProject.title}</span>
+              </NavLink>
+            )}
+          </div>
+        )}
       </div>
     </section>
   );
