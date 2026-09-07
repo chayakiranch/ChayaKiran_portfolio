@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { ArrowRight, GraduationCap } from "lucide-react";
+import { ArrowRight, GraduationCap, Mail, Linkedin, Github } from "lucide-react"; // UPDATED: added Mail, Linkedin, Github icons for Task 5
 import Hero from "../components/Hero";
 import SkillCard from "../components/SkillCard"; // NEW: replaces Chip-based Skills layout
 import Chip from "../components/Chip";
@@ -87,12 +87,10 @@ export default function Home() {
             <h2 className="font-display font-semibold text-[clamp(1.9rem,3.4vw,2.75rem)] leading-tight tracking-tight mb-2.5">
               Where I've Worked
             </h2>
-            <p className="text-muted text-[1.05rem] max-w-[620px] mx-auto mb-4">
+            <p className="text-muted text-[1.05rem] max-w-[620px] mx-auto">
               My professional journey so far
             </p>
-            <NavLink to="/experience" className="glow-navlink inline-flex items-center gap-1.5 text-accent text-sm font-semibold group">
-              View experience <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
-            </NavLink>
+            {/* MOVED: "View experience" link relocated from here to the bottom of the section (Task 3) */}
           </div>
 
           <div className="relative">
@@ -139,6 +137,13 @@ export default function Home() {
               ))}
             </div>
           </div>
+
+          {/* NEW: "View experience" link now sits at the bottom of the tab (Task 3) */}
+          <div className="text-center mt-10">
+            <NavLink to="/experience" className="glow-navlink inline-flex items-center gap-1.5 text-accent text-sm font-semibold group">
+              View experience <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
+            </NavLink>
+          </div>
         </div>
       </section>
 
@@ -154,12 +159,10 @@ export default function Home() {
             <h2 className="font-display font-semibold text-[clamp(1.9rem,3.4vw,2.75rem)] leading-tight tracking-tight mb-2.5">
               Academic Background
             </h2>
-            <p className="text-muted text-[1.05rem] max-w-[620px] mx-auto mb-4">
+            <p className="text-muted text-[1.05rem] max-w-[620px] mx-auto">
               My academic journey so far
             </p>
-            <NavLink to="/education" className="glow-navlink inline-flex items-center gap-1.5 text-accent text-sm font-semibold group">
-              View education <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
-            </NavLink>
+            {/* MOVED: "View education" link relocated from here to the bottom of the section (Task 3) */}
           </div>
 
           <div className="relative">
@@ -198,7 +201,7 @@ export default function Home() {
 
                         <div className="flex flex-wrap gap-2 mb-5">
                           <span className="glow-badge bg-bg-alt px-3 py-1.5 rounded-lg text-sm text-muted">
-                            {edu.score.includes("%") ? "Score" : "GPA"}: {edu.score}
+                            {edu.score.includes("%") ? "Score" : "CGPA"}: {edu.score} {/* FIXED: "GPA" -> "CGPA" (Task 6) */}
                           </span>
                         </div>
 
@@ -210,6 +213,13 @@ export default function Home() {
                   </div>
                 ))}
             </div>
+          </div>
+
+          {/* NEW: "View education" link now sits at the bottom of the tab (Task 3) */}
+          <div className="text-center mt-10">
+            <NavLink to="/education" className="glow-navlink inline-flex items-center gap-1.5 text-accent text-sm font-semibold group">
+              View education <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
+            </NavLink>
           </div>
         </div>
       </section>
@@ -254,7 +264,15 @@ export default function Home() {
                 </div>
 
                 <h3 className="font-display text-lg font-semibold mb-2.5">{p.title}</h3>
-                <p className="text-muted text-[0.9rem] leading-relaxed mb-5">{p.summary}</p>
+                <p className="text-muted text-[0.9rem] leading-relaxed mb-4">{p.summary}</p>
+
+                {/* NEW: key-highlight snippet pulled from projectsData.highlights (Task 4) */}
+                {p.highlights?.[0] && (
+                  <p className="flex gap-2 text-muted-2 text-[0.82rem] leading-relaxed mb-5">
+                    <span className="text-accent shrink-0">▸</span>
+                    <span>{p.highlights[0]}</span>
+                  </p>
+                )}
 
                 <div className="flex flex-wrap gap-2 mb-5 mt-auto">
                   {p.stack.slice(0, 6).map((s) => (
@@ -284,22 +302,60 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CONTACT CTA */}
-      <section className="py-24 text-center">
+      {/* CONTACT CTA — REDESIGNED (Task 5): plain centered text/button replaced with a
+          glow-card panel matching the visual language used elsewhere on the site
+          (glassmorphism card, quick-contact icon row, accent CTA button). */}
+      <section className="py-24">
         <div className="max-w-[1120px] mx-auto px-6 md:px-8">
-          <h2 className="font-display font-semibold text-[clamp(1.9rem,3.4vw,2.75rem)] leading-tight tracking-tight mb-5">
-            Let's Build Something Great
-          </h2>
-          <p className="text-muted max-w-[560px] mx-auto mb-8">
-            I'm always open to discussing new projects, creative ideas, or opportunities to be part of your
-            vision — including internships and entry-level cloud/full-stack roles.
-          </p>
-          <NavLink
-            to="/contact"
-            className="glow-btn inline-flex items-center justify-center font-semibold text-[0.95rem] px-[26px] py-3.5 rounded-full bg-accent text-[#06201d]"
-          >
-            Get in touch
-          </NavLink>
+          <div className="glow-card bg-panel/80 backdrop-blur-md border border-panel-border rounded-3xl p-10 md:p-14 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+            <div>
+              <p className="font-mono text-[0.78rem] tracking-[0.12em] uppercase text-accent mb-5">
+                Contact
+              </p>
+              <h2 className="font-display font-semibold text-[clamp(1.9rem,3.4vw,2.75rem)] leading-tight tracking-tight mb-5">
+                Let's Build Something Great
+              </h2>
+              <p className="text-muted max-w-[480px] mb-8">
+                I'm always open to discussing new projects, creative ideas, or opportunities to be part of your
+                vision — including internships and entry-level cloud/full-stack roles.
+              </p>
+              <NavLink
+                to="/contact"
+                className="glow-btn inline-flex items-center justify-center gap-1.5 font-semibold text-[0.95rem] px-[26px] py-3.5 rounded-full bg-accent text-[#06201d]"
+              >
+                Get in touch <ArrowRight size={15} />
+              </NavLink>
+            </div>
+
+            {/* NEW: quick-contact icon row (Task 5) */}
+            <div className="flex flex-col gap-4">
+              <a
+                href={`mailto:${profile.email}`}
+                className="glow-card flex items-center gap-3 bg-bg-alt border border-panel-border rounded-xl px-5 py-4 text-sm text-text"
+              >
+                <Mail size={17} className="glow-icon text-accent shrink-0" />
+                <span className="truncate">{profile.email}</span>
+              </a>
+              <a
+                href={profile.socials.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="glow-card flex items-center gap-3 bg-bg-alt border border-panel-border rounded-xl px-5 py-4 text-sm text-text"
+              >
+                <Linkedin size={17} className="glow-icon text-accent shrink-0" />
+                <span className="truncate">LinkedIn</span>
+              </a>
+              <a
+                href={profile.socials.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="glow-card flex items-center gap-3 bg-bg-alt border border-panel-border rounded-xl px-5 py-4 text-sm text-text"
+              >
+                <Github size={17} className="glow-icon text-accent shrink-0" />
+                <span className="truncate">GitHub</span>
+              </a>
+            </div>
+          </div>
         </div>
       </section>
     </>
