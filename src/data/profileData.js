@@ -3,7 +3,7 @@ const profile = {
   name: "Chintakula Chaya Kiran",
   initials: "CCK",
   role: "Cloud & Edge Computing Engineer · Full-Stack (MERN) Developer",
-  location: "Vijayawada, Andhra Pradesh, India",
+  location: "Vijayawada, India", // FIXED: "Vijayawada, Andhra Pradesh, India" -> "Vijayawada, India" (Task 8)
   // REMOVED: phone field deleted per request (mobile number removed from whole project)
   email: "chayakiranch@gmail.com",
   resumeFile: "/resume/Chaya_Kiran_Resume.pdf",

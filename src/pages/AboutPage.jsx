@@ -11,12 +11,16 @@ export default function AboutPage() {
         <SectionHeading eyebrow="About" title="About me" />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start mt-12">
+          {/* UPDATED: left-column bio rewritten (Task 9); right column untouched per request */}
           <div className="space-y-5 text-muted">
             <p>{profile.objective}</p>
             <p>
-              During my internship at Vehinova Technologies, I contributed to the design and deployment of
-              high-performance, cloud-native solutions. Outside of coursework, I compete in hackathons on
-              HackerRank and LeetCode, and volunteer with Sweccha NGO on community-driven sustainability
+              I recently completed my B.Tech in Computer Science Engineering, specializing in Cloud and Edge
+              Computing, and I'm now looking for full-stack or cloud engineering roles where I can put that
+              foundation to work. During my internship at Vehinova Technologies, I helped design and deploy
+              high-performance, cloud-native solutions — hands-on experience that shaped how I approach building
+              real products, not just coursework projects. Outside of that, I keep sharpening my problem-solving
+              on HackerRank and LeetCode, and I volunteer with Sweccha NGO on community-driven sustainability
               initiatives.
             </p>
           </div>
@@ -25,7 +29,7 @@ export default function AboutPage() {
             <div className="flex flex-col gap-3.5 pb-6 border-b border-panel-border">
               <Fact label="Location" value={profile.location} />
               <Fact label="Focus" value="Cloud & Edge Computing" />
-              <Fact label="Currently" value="B.Tech CSE, final year (2022–2026)" />
+              <Fact label="Currently" value="Fresher" /> {/* FIXED: "B.Tech CSE, final year (2022–2026)" -> "Fresher" (Task 7) */}
               {/* REMOVED: Phone fact row deleted per request (mobile number removed from whole project) */}
               <Fact label="Email" value={profile.email} />
             </div>
