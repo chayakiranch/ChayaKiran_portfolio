@@ -37,8 +37,11 @@ export default function SkillCard({ category, icon, items }) {
         <h3 className="font-display text-[0.95rem] font-semibold text-text">{category}</h3>
       </div>
 
-      {/* SIZE REDUCED: gap-2.5 -> gap-1.5 */}
-      <div className="flex flex-wrap gap-1.5 mt-auto">
+      {/* FIXED (Task 25): mt-auto removed — badges now sit directly under the
+          heading instead of being pushed to the bottom of a card stretched
+          taller by a row-mate with more items (e.g. "Databases"/"Tools" next
+          to "Cloud & DevOps"), which made them look misaligned/floating. */}
+      <div className="flex flex-wrap gap-1.5">
         {items.map((item) => (
           <SkillBadge key={item}>{item}</SkillBadge>
         ))}

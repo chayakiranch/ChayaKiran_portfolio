@@ -97,7 +97,7 @@ export default function ResumePage() {
                       <p className="text-muted text-sm mt-0.5">{item.desc}</p>
                       {/* NEW: link straight to the full Certifications page */}
                       {isCertifications && (
-                        <NavLink to="/certifications" className="glow-navlink inline-flex items-center gap-1.5 text-accent text-sm font-semibold mt-2 group">
+                        <NavLink to="/certifications" className="glow-navlink inline-flex items-center gap-1.5 text-accent text-sm font-semibold mt-4 group"> {/* FIXED: mt-2 -> mt-4 so it doesn't look merged with the desc text (Task 19) */}
                           View all certifications <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
                         </NavLink>
                       )}

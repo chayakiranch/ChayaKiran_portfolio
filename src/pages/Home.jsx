@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { ArrowRight, GraduationCap, Mail, Linkedin, Github } from "lucide-react"; // UPDATED: added Mail, Linkedin, Github icons for Task 5
+import { ArrowRight, GraduationCap, Mail, Linkedin, Github, Award } from "lucide-react"; // UPDATED: added Mail, Linkedin, Github, Award icons for Task 5 / Task 23
 import Hero from "../components/Hero";
 import SkillCard from "../components/SkillCard"; // NEW: replaces Chip-based Skills layout
 import Chip from "../components/Chip";
@@ -354,6 +354,18 @@ export default function Home() {
                 <Github size={17} className="glow-icon text-accent shrink-0" />
                 <span className="truncate">GitHub</span>
               </a>
+              {/* NEW: Credly profile link (Task 23) */}
+              {profile.socials.credly && (
+                <a
+                  href={profile.socials.credly}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="glow-card flex items-center gap-3 bg-bg-alt border border-panel-border rounded-xl px-5 py-4 text-sm text-text"
+                >
+                  <Award size={17} className="glow-icon text-accent shrink-0" />
+                  <span className="truncate">Credly</span>
+                </a>
+              )}
             </div>
           </div>
         </div>

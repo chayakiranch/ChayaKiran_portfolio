@@ -1,17 +1,20 @@
-import { Mail, Linkedin, Github } from "lucide-react"; // CHANGED: removed unused NavLink import (Certifications footer link removed)
+import { Mail, Linkedin, Github, Award } from "lucide-react"; // UPDATED: added Award icon for Credly (Task 23)
 import profile from "../data/profileData";
 
 const socialIcons = [
   { icon: Github, href: profile.socials.github || "#" },
   { icon: Linkedin, href: profile.socials.linkedin || "#" },
+  // NEW: Credly profile icon (Task 23) — only shown once a URL is set
+  ...(profile.socials.credly ? [{ icon: Award, href: profile.socials.credly }] : []),
   { icon: Mail, href: `mailto:${profile.email}` },
 ];
 
 export default function Footer() {
   return (
-    <footer className="border-t border-panel-border pt-10 pb-6 mt-12">
+    // REDUCED (Task 26): pt-10 pb-6 mt-12 -> pt-6 pb-4 mt-8 for a shorter, tighter footer
+    <footer className="border-t border-panel-border pt-6 pb-4 mt-8">
       <div className="max-w-[1120px] mx-auto px-6 md:px-8">
-        <div className="flex items-center justify-between flex-wrap gap-6 pb-8">
+        <div className="flex items-center justify-between flex-wrap gap-6 pb-5">
           <div>
             <p className="font-display font-bold text-lg text-accent">{profile.name}</p>
             <p className="text-text text-sm mt-1">{profile.role}</p>
@@ -32,7 +35,8 @@ export default function Footer() {
             })}
           </div>
         </div>
-        <div className="pt-6 border-t border-panel-border text-center text-sm text-muted-2">
+        {/* REDUCED (Task 26): pt-6 -> pt-4 */}
+        <div className="pt-4 border-t border-panel-border text-center text-sm text-muted-2">
           © {new Date().getFullYear()} {profile.name}. Building at the edge of cloud and code, one commit at a time.
         </div>
       </div>

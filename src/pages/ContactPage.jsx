@@ -1,12 +1,30 @@
 import { useState } from "react";
-import { Mail, Linkedin, Github } from "lucide-react"; // FIXED: Phone icon import removed
+import { Mail, Linkedin, Github, Award } from "lucide-react"; // UPDATED: Phone icon removed, Award icon added for Credly (Task 23)
 import profile from "../data/profileData";
+
+// NEW: strips "https://www." (or bare "https://") for cleaner display text,
+// while the raw URL is still used for the actual href (Task 22)
+const displayUrl = (url) => url.replace(/^https?:\/\/(www\.)?/, "");
 
 const contactLinks = [
   { icon: Mail, label: profile.email, href: `mailto:${profile.email}` },
   // REMOVED: Phone contact link deleted per request (mobile number removed from whole project)
-  { icon: Linkedin, label: profile.socials.linkedin || "Add your LinkedIn URL", href: profile.socials.linkedin || "#" },
-  { icon: Github, label: profile.socials.github || "Add your GitHub URL", href: profile.socials.github || "#" },
+  {
+    icon: Linkedin,
+    label: profile.socials.linkedin ? displayUrl(profile.socials.linkedin) : "Add your LinkedIn URL",
+    href: profile.socials.linkedin || "#",
+  },
+  {
+    icon: Github,
+    label: profile.socials.github ? displayUrl(profile.socials.github) : "Add your GitHub URL",
+    href: profile.socials.github || "#",
+  },
+  // NEW: Credly profile link (Task 23)
+  {
+    icon: Award,
+    label: profile.socials.credly ? displayUrl(profile.socials.credly) : "Add your Credly profile URL",
+    href: profile.socials.credly || "#",
+  },
 ];
 
 export default function ContactPage() {

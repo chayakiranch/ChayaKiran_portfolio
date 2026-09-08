@@ -1,4 +1,6 @@
-// Recategorized into 6 groups for the redesigned Skills section.
+// REGROUPED (Task 24): rebalanced into 6 more evenly-sized groups so card
+// heights stay consistent across the grid (previous "Cloud & DevOps" group
+// had 6 items vs. 3 elsewhere, causing uneven row heights — see Task 25).
 // All items preserved from the original data — nothing added or removed.
 const skillsData = [
   {
@@ -17,21 +19,23 @@ const skillsData = [
     items: ["Node.js", "Express.js", "Django"],
   },
   {
-    category: "Cloud & DevOps",
-    icon: "cloud",
-    items: ["AWS", "Google Cloud", "Cloud-native Development", "Edge Computing", "Git", "GitHub"],
-  },
-  {
     category: "Databases",
     icon: "database",
     items: ["MySQL", "PostgreSQL", "MongoDB"],
   },
   {
-    // Renamed from "AI & Tools" — the underlying data has no AI/ML skills,
-    // so "Tools & Integration" accurately describes VS Code, PyCharm, and API Integration.
-    category: "Tools & Integration",
+    category: "Cloud & DevOps",
+    icon: "cloud",
+    // MOVED: Git, GitHub relocated to "Tools & Version Control" below to
+    // shrink this group from 6 items down to 4 (Task 24)
+    items: ["AWS", "Google Cloud", "Cloud-native Development", "Edge Computing"],
+  },
+  {
+    // RENAMED: "Tools & Integration" -> "Tools & Version Control" now that
+    // Git/GitHub live here alongside the existing tools (Task 24)
+    category: "Tools & Version Control",
     icon: "cpu",
-    items: ["API Integration", "VS Code", "PyCharm"],
+    items: ["Git", "GitHub", "API Integration", "VS Code", "PyCharm"],
   },
 ];
 

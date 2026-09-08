@@ -14,6 +14,7 @@ const profile = {
   socials: {
     linkedin: "https://www.linkedin.com/in/chaya-kiran-chintakula/",
     github: "https://github.com/chayakiranch",
+    credly: "https://www.credly.com/users/chintakula-chaya-kiran",
   },
 };
 
