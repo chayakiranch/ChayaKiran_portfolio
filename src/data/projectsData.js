@@ -5,8 +5,9 @@ const projectsData = [
     kicker: "Full-stack · E-commerce",
     status: "completed",
     duration: "Jul 2023 – Nov 2023",
+    // REVISED: summary tightened to a concise 2-sentence purpose + impact style
     summary:
-      "A scalable full-stack e-commerce platform built with React.js, Node.js and Express.js, focused on load efficiency and responsiveness.",
+      "A full-stack e-commerce platform for browsing, purchasing, and managing books, built with React, Node.js, and Express. Custom RESTful APIs and JWT-secured authentication improved data retrieval speed by ~30% while keeping every transaction safe.",
     highlights: [
       "Designed RESTful APIs for frontend–backend communication, improving data retrieval speed by ~30%.",
       "Integrated MongoDB for robust handling of user accounts, inventory and transactions.",
@@ -26,8 +27,9 @@ const projectsData = [
     kicker: "Full-stack · Publishing",
     status: "completed",
     duration: "Dec 2023 – Apr 2024",
+    // REVISED: summary tightened to a concise 2-sentence purpose + impact style
     summary:
-      "A full-featured blogging platform with modules for user registration, post creation and commenting, built on the Django framework.",
+      "A full-stack publishing platform where users can register, write, and comment on posts, built on Django with PostgreSQL. Session-based authentication and an MVC architecture keep the codebase secure, maintainable, and easy to extend.",
     highlights: [
       "Used Django ORM with PostgreSQL for efficient data storage and retrieval.",
       "Integrated secure authentication and session management to protect user credentials.",
@@ -47,8 +49,9 @@ const projectsData = [
     kicker: "Cloud & Edge Computing · Full-stack",
     status: "completed",
     duration: "Mar 2026 – Apr 2026",
+    // REVISED: summary tightened to a concise 2-sentence purpose + impact style
     summary:
-      "A full-stack cloud cost-management platform that connects directly to a user's AWS account and turns raw Cost Explorer, CloudWatch, and resource-inventory data into an interactive billing dashboard — with cost forecasting, performance monitoring, and automated savings recommendations.",
+      "A cloud cost-management platform that turns raw AWS billing and performance data into a live, interactive dashboard. It delivers real-time cost forecasting, resource monitoring, and automated savings recommendations straight from a user's own AWS account.",
     highlights: [
       "Built an Express backend integrating 5 AWS SDK v3 clients (Cost Explorer, CloudWatch, EC2, RDS, S3, Lambda) to pull live billing, performance, and resource-inventory data on demand.",
       "Implemented monthly/daily cost breakdowns, multi-window cost forecasting, and a service-level spend table with interactive trend and donut charts (Chart.js).",

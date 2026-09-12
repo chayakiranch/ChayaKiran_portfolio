@@ -246,7 +246,7 @@ export default function Home() {
               <NavLink
                 key={p.id}
                 to={`/projects/${p.id}`}
-                className="glow-card flex flex-col bg-panel/80 backdrop-blur-md border border-panel-border rounded-2xl p-7"
+                className="glow-card h-full flex flex-col bg-panel/80 backdrop-blur-md border border-panel-border rounded-2xl p-7"
               >
                 <div className="flex items-center justify-between mb-4 gap-2">
                   <span
@@ -264,15 +264,10 @@ export default function Home() {
                 </div>
 
                 <h3 className="font-display text-lg font-semibold mb-2.5">{p.title}</h3>
-                <p className="text-muted text-[0.9rem] leading-relaxed mb-4">{p.summary}</p>
-
-                {/* NEW: key-highlight snippet pulled from projectsData.highlights (Task 4) */}
-                {p.highlights?.[0] && (
-                  <p className="flex gap-2 text-muted-2 text-[0.82rem] leading-relaxed mb-5">
-                    <span className="text-accent shrink-0">▸</span>
-                    <span>{p.highlights[0]}</span>
-                  </p>
-                )}
+                {/* Highlights bullets removed from the card view — summary is now
+                    the only description shown here; full highlights live on the
+                    project details page (Task: card revamp) */}
+                <p className="text-muted text-[0.9rem] leading-relaxed mb-5">{p.summary}</p>
 
                 <div className="flex flex-wrap gap-2 mb-5 mt-auto">
                   {p.stack.slice(0, 6).map((s) => (

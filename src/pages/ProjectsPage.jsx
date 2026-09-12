@@ -4,25 +4,27 @@ import SectionHeading from "../components/SectionHeading";
 import Chip from "../components/Chip";
 import projectsData from "../data/projectsData";
 
-// REVAMPED (Task 15): Projects list page redesigned to match the polished
+// REVAMPED: Projects list page redesigned to match the polished
 // card language used elsewhere on the site — status pill, category label,
-// key-highlight snippet, and a consistent glow-card footer — instead of the
-// previous plain title/summary/chip-list layout.
+// and a consistent glow-card footer — instead of the previous plain
+// title/summary/chip-list layout. Cards show only the concise summary;
+// full highlights live on the project details page.
 export default function ProjectsPage() {
   return (
     <section className="py-24">
       <div className="max-w-[1120px] mx-auto px-6 md:px-8">
-        <SectionHeading eyebrow="Projects" title="Things I've Built" />
-        <p className="text-muted text-[1.05rem] max-w-[620px] mt-4">
-          A closer look at the full-stack and cloud projects I've designed, built, and shipped.
-        </p>
+        <SectionHeading
+          eyebrow="Projects"
+          title="Things I've Built"
+          lead="A closer look at the full-stack and cloud projects I've designed, built, and shipped."
+        />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
           {projectsData.map((p) => (
             <NavLink
               key={p.id}
               to={`/projects/${p.id}`}
-              className="glow-card flex flex-col bg-panel/80 backdrop-blur-md border border-panel-border rounded-2xl p-7"
+              className="glow-card h-full flex flex-col bg-panel/80 backdrop-blur-md border border-panel-border rounded-2xl p-7"
             >
               <div className="flex items-center justify-between mb-4 gap-2">
                 <span
@@ -43,15 +45,10 @@ export default function ProjectsPage() {
                 {p.kicker}
               </span>
               <h3 className="font-display text-xl font-semibold mb-2.5">{p.title}</h3>
-              <p className="text-muted text-[0.95rem] leading-relaxed mb-4">{p.summary}</p>
-
-              {/* Key-highlight snippet, mirrors the Home page project cards */}
-              {p.highlights?.[0] && (
-                <p className="flex gap-2 text-muted-2 text-[0.82rem] leading-relaxed mb-5">
-                  <span className="text-accent shrink-0">▸</span>
-                  <span>{p.highlights[0]}</span>
-                </p>
-              )}
+              {/* Highlights bullets removed from the card view — summary is now
+                  the only description shown here; full highlights live on the
+                  project details page */}
+              <p className="text-muted text-[0.95rem] leading-relaxed mb-5">{p.summary}</p>
 
               <div className="flex flex-wrap gap-2 mb-5 mt-auto">
                 {p.stack.map((s) => (
@@ -73,7 +70,9 @@ export default function ProjectsPage() {
           ))}
 
           {/* TODO: add more project cards here as new projects are built */}
-          <div className="border border-dashed border-panel-border rounded-2xl p-8 flex items-center justify-center text-center text-muted-2 text-sm min-h-[180px]">
+          {/* self-start: keeps this placeholder compact instead of stretching
+              to match a taller sibling card in the same grid row. */}
+          <div className="self-start border border-dashed border-panel-border rounded-2xl p-8 flex items-center justify-center text-center text-muted-2 text-sm min-h-[180px]">
             More projects coming soon.
           </div>
         </div>
