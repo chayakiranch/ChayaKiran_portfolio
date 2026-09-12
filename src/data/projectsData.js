@@ -61,10 +61,66 @@ const projectsData = [
       "Designed the app to run against a user's own AWS credentials (entered client-side per session, never stored) with CORS locked to specific origins, plus a demo-data mode so the UI is explorable without AWS access.",
     ],
     stack: ["React", "Vite", "Tailwind CSS", "Node.js", "Express", "AWS SDK v3", "Chart.js"],
-    // TODO: add a live demo URL if/when this is deployed with a hosted backend + demo AWS credentials.
-    liveUrl: "",
+    // UPDATED: live demo now deployed (frontend on Vercel, backend on Render) — opens in Demo mode, no AWS account needed.
+    liveUrl: "https://aws-billing-dashboard.vercel.app",
     repoUrl: "https://github.com/chayakiranch/aws-billing-dashboard",
     architectureImage: "",
+
+    // ===== NEW: caseStudy =====
+    // Rich, sectioned write-up (sourced from the project's own README) that
+    // powers the case-study layout with an "On This Page" sidebar in
+    // ProjectDetails.jsx. This field is OPTIONAL — projects without it keep
+    // rendering the original simple layout, so Online Book Store and Online
+    // Blogging System are unaffected.
+    caseStudy: {
+      overview:
+        "AWS Billing Dashboard consolidates the AWS Billing Console's scattered views into a single interactive dashboard. A React + Vite frontend pairs with an Express backend that calls the AWS SDK directly, so account credentials never touch a third-party service. Every tab works out of the box in Demo mode with realistic mock data, and switches to live data the moment an AWS account is connected.",
+      problem: {
+        intro:
+          "Checking AWS spend day-to-day means navigating Cost Explorer, CloudWatch, and several service consoles separately, each with its own UI and level of detail.",
+        points: [
+          "AWS's own Billing Console is dense and spread across multiple separate pages.",
+          "Spend, forecast, resource inventory, performance, and cost-saving signals each live in a different tool.",
+          "There's no single view built for the day-to-day habits of a single developer or small project.",
+        ],
+      },
+      goals: [
+        "Pull current spend, forecast, and per-service breakdown into one dashboard, backed by the real AWS SDK rather than a static export.",
+        "Surface EC2, RDS, S3, and Lambda resource inventory in one place with search, filter, and sort.",
+        "Monitor EC2 CPU and network performance via CloudWatch with per-instance drill-down.",
+        "Flag idle instances, oversized resources, and other cost-saving opportunities with a rule-based recommendation engine.",
+        "Model a 6-month cost projection and a service-dependency graph using Dijkstra's algorithm for cost-optimal paths between high-spend services.",
+        "Keep the whole thing explorable without AWS access via a full Demo mode, and switch to Live mode per session without ever storing credentials.",
+      ],
+      architecture: {
+        description:
+          "Built as a genuine two-part app: a React + Vite frontend and an Express backend that performs every AWS SDK call server-side. AWS credentials are sent from the frontend as request headers only when Live mode is active, and are never stored — the backend builds a fresh AWS SDK client per request from either the connected credentials (Live mode) or static mock data (Demo mode). There's no database and no authentication layer; it's a live-query tool against a single AWS account per session, not a persisted multi-user system.",
+        image: "/projects/aws-billing-dashboard/architecture.png",
+        notes: [
+          "React + Vite frontend (deployed on Vercel) never talks to AWS directly.",
+          "Express backend (deployed on Render) builds a fresh AWS SDK v3 client per request.",
+          "AWS SDK v3 calls Cost Explorer, CloudWatch, EC2, RDS, S3, and Lambda directly.",
+          "All IAM access is scoped strictly read-only — no write, create, or delete permissions anywhere in the app.",
+        ],
+      },
+      keyFeatures: {
+        // NOTE: titled "AWS Services & Integrations" rather than "Agents and
+        // Tools" since this project integrates AWS SDK clients, not AI agents.
+        title: "AWS Services & Integrations",
+        items: [
+          "AWS Cost Explorer — cost/usage data and forecasting",
+          "Amazon CloudWatch — EC2 CPU and network metrics",
+          "Amazon EC2 — instance inventory and performance",
+          "Amazon RDS — database instance inventory",
+          "Amazon S3 — bucket inventory",
+          "AWS Lambda — function inventory",
+        ],
+      },
+      // No "Future Direction" section — omitted rather than invented, since
+      // the source README doesn't state one. ProjectDetails.jsx skips any
+      // caseStudy section whose data is missing.
+      futureDirection: null,
+    },
   },
   // TODO: add more projects here as they're built. Keep the same shape
   // (id, title, kicker, duration, summary, highlights, stack, liveUrl,
