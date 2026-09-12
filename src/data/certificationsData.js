@@ -7,7 +7,7 @@ const certificationsData = [
   {
     id: "aviatrix-ace-mcna",
     title: "Aviatrix Certified Engineer — Multicloud Network Associate",
-    organization: "Aviatrix, Inc.",
+    organization: "Aviatrix", // FIXED: "Aviatrix, Inc." -> "Aviatrix" (Task 18)
     platform: "Credly",
     category: "Global Certifications",
     issueDate: "February 2026",
@@ -21,7 +21,7 @@ const certificationsData = [
   {
     id: "oci-2025-foundations",
     title: "Oracle Cloud Infrastructure 2025 Certified Foundations Associate",
-    organization: "Oracle University",
+    organization: "Oracle", // FIXED: "Oracle University" -> "Oracle" (Task 18)
     platform: "Oracle University",
     category: "Global Certifications",
     issueDate: "December 2025",
