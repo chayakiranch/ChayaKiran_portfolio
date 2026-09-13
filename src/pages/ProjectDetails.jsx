@@ -303,9 +303,9 @@ function CaseStudyLayout({ project, caseStudy: cs, Header, PrevNext }) {
           </div>
         </div>
 
-        <div className="max-w-[820px]">
-          <PrevNext />
-        </div>
+        {/* UPDATED: removed max-w-[820px] — Previous/Next now spans the full
+            page width so "Next Project" sits at the true right edge. */}
+        <PrevNext />
       </div>
     </section>
   );
