@@ -1,5 +1,5 @@
 import { useParams, NavLink } from "react-router-dom";
-import { useEffect, useState } from "react"; // NEW: for the case-study TOC scroll-spy
+import { useEffect, useState } from "react";
 import { ArrowLeft, ArrowRight, ExternalLink, Github, Image as ImageIcon } from "lucide-react";
 import Chip from "../components/Chip";
 import projectsData from "../data/projectsData";
@@ -25,7 +25,7 @@ export default function ProjectDetails() {
     );
   }
 
-  // NEW: shared "back" link + kicker/title/status header used by both layouts
+  // Shared "back" link + kicker/title/status header, used by every project.
   const Header = () => (
     <>
       <div className="mb-8">
@@ -82,10 +82,9 @@ export default function ProjectDetails() {
     </>
   );
 
-  // NEW: prev/next footer, shared by both layouts
+  // Prev/next footer, shared by every project.
   const PrevNext = () =>
     (prevProject || nextProject) && (
-      // UPDATED: mt-10 pt-8 -> mt-8 pt-6 (tighter)
       <div className="flex justify-between gap-4 mt-8 pt-6 border-t border-panel-border">
         {prevProject ? (
           <NavLink to={`/projects/${prevProject.id}`} className="glow-navlink flex flex-col items-start gap-1 text-left max-w-[45%]">
@@ -108,101 +107,36 @@ export default function ProjectDetails() {
       </div>
     );
 
-  // ===== NEW: rich case-study layout (Overview / Problem / Goals /
-  // Architecture / key features / Future Direction) with a sticky
-  // "On This Page" sidebar, used only when project.caseStudy is present. =====
-  if (project.caseStudy) {
-    return <CaseStudyLayout project={project} Header={Header} PrevNext={PrevNext} />;
-  }
+  // ===== UPDATED: every project now renders through CaseStudyLayout — the
+  // "On This Page" sidebar format. Projects with a real project.caseStudy
+  // (AWS Billing Dashboard) use it unchanged. Projects without one (Book
+  // Store, Blogging System) get an "effective" case study built ONLY from
+  // fields that already existed for them — summary becomes Overview,
+  // highlights becomes a Highlights section, architectureImage becomes the
+  // Architecture section. No new Problem / Goals / Architecture-description /
+  // Key-features content is invented — those sections simply don't render
+  // for these two projects until real source material is provided. =====
+  const effectiveCaseStudy =
+    project.caseStudy || {
+      overview: project.summary,
+      highlights: project.highlights,
+      architecture: project.architectureImage ? { image: project.architectureImage } : null,
+    };
 
-  // ===== ORIGINAL simple layout — still used by projects that don't have a
-  // caseStudy (Online Book Store, Online Blogging System). =====
-  return (
-    // UPDATED: pb-10 -> pb-4 (further reduced per feedback)
-    <section className="pt-24 pb-4">
-      <div className="max-w-[820px] mx-auto px-6 md:px-8">
-        <div className="mb-8">
-          <NavLink to="/projects" className="glow-navlink inline-flex items-center gap-1.5 text-muted text-sm hover:text-accent">
-            <ArrowLeft size={15} /> Back to projects
-          </NavLink>
-        </div>
-
-        <span className="font-mono text-[0.75rem] text-accent uppercase tracking-wide">{project.kicker}</span>
-        <h1 className="font-display font-semibold text-[clamp(1.8rem,3.4vw,2.5rem)] leading-tight mt-3">
-          {project.title}
-        </h1>
-        <p className="font-mono text-[0.8rem] text-muted-2 mt-2">{project.duration}</p>
-
-        <p className="text-muted mt-8 text-[1.02rem] leading-relaxed">{project.summary}</p>
-
-        <div className="mt-10">
-          <h2 className="font-display text-lg font-semibold mb-4">Architecture</h2>
-          {project.architectureImage ? (
-            <img src={project.architectureImage} alt={`${project.title} architecture diagram`} className="rounded-xl border border-panel-border" />
-          ) : (
-            <div className="border border-dashed border-panel-border rounded-xl p-10 flex flex-col items-center gap-2 text-muted-2 text-sm">
-              <ImageIcon size={22} />
-              Architecture diagram coming soon.
-            </div>
-          )}
-        </div>
-
-        <h2 className="font-display text-lg font-semibold mt-10 mb-4">Highlights</h2>
-        <ul className="space-y-3">
-          {project.highlights.map((h) => (
-            <li key={h} className="relative pl-5 text-muted text-[0.95rem]">
-              <span className="absolute left-0 top-[-2px] text-accent text-lg leading-none">·</span>
-              {h}
-            </li>
-          ))}
-        </ul>
-
-        <h2 className="font-display text-lg font-semibold mt-10 mb-4">Stack</h2>
-        <div className="flex flex-wrap gap-2 mb-10">
-          {project.stack.map((s) => (
-            <Chip key={s}>{s}</Chip>
-          ))}
-        </div>
-
-        <div className="flex gap-3 flex-wrap">
-          {project.liveUrl ? (
-            <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="glow-btn inline-flex items-center gap-2 text-sm font-semibold px-5 py-3 rounded-full bg-accent text-[#06201d]">
-              <ExternalLink size={15} /> Live demo
-            </a>
-          ) : (
-            <span className="inline-flex items-center gap-2 text-sm font-medium px-5 py-3 rounded-full border border-dashed border-panel-border text-muted-2">
-              <ExternalLink size={15} /> Live demo link coming soon
-            </span>
-          )}
-          {project.repoUrl ? (
-            <a href={project.repoUrl} target="_blank" rel="noopener noreferrer" className="glow-btn inline-flex items-center gap-2 text-sm font-semibold px-5 py-3 rounded-full border border-panel-border text-text hover:border-accent">
-              <Github size={15} /> Source code
-            </a>
-          ) : (
-            <span className="inline-flex items-center gap-2 text-sm font-medium px-5 py-3 rounded-full border border-dashed border-panel-border text-muted-2">
-              <Github size={15} /> Repo link coming soon
-            </span>
-          )}
-        </div>
-
-        <PrevNext />
-      </div>
-    </section>
-  );
+  return <CaseStudyLayout project={project} caseStudy={effectiveCaseStudy} Header={Header} PrevNext={PrevNext} />;
 }
 
-// ===== NEW: CaseStudyLayout — sidebar "On This Page" TOC + sectioned
-// content, mirroring the pattern already used in ExperienceDetails.jsx. =====
-function CaseStudyLayout({ project, Header, PrevNext }) {
-  const cs = project.caseStudy;
-
+// Sidebar "On This Page" TOC + sectioned content, mirroring the pattern
+// already used in ExperienceDetails.jsx.
+function CaseStudyLayout({ project, caseStudy: cs, Header, PrevNext }) {
   // Build the nav list dynamically — sections with no data are skipped
   // entirely instead of rendering an empty heading.
   const navItems = [
     cs.overview && { id: "overview", label: "Overview" },
     cs.problem && { id: "problem", label: "Problem" },
     cs.goals?.length && { id: "goals", label: "Goals" },
-    cs.architecture && { id: "architecture", label: "Architecture" },
+    { id: "architecture", label: "Architecture" }, // UPDATED: always shown — falls back to a "coming soon" placeholder
+    cs.highlights?.length && { id: "highlights", label: "Highlights" },
     cs.keyFeatures && { id: "key-features", label: cs.keyFeatures.title },
     cs.futureDirection?.length && { id: "future-direction", label: "Future Direction" },
   ].filter(Boolean);
@@ -224,7 +158,6 @@ function CaseStudyLayout({ project, Header, PrevNext }) {
   }, [project.id]);
 
   return (
-    // UPDATED: pb-10 -> pb-4 (further reduced per feedback — still too much gap above footer)
     <section className="pt-24 pb-4">
       <div className="max-w-[1120px] mx-auto px-6 md:px-8">
         <div className="max-w-[820px]">
@@ -292,37 +225,51 @@ function CaseStudyLayout({ project, Header, PrevNext }) {
               </section>
             )}
 
-            {cs.architecture && (
-              <section id="architecture" className="mb-16 scroll-mt-32">
-                <h2 className="font-display text-2xl font-bold mb-5">Architecture</h2>
-                {cs.architecture.description && (
-                  <p className="text-muted leading-8 mb-6">{cs.architecture.description}</p>
-                )}
-                {cs.architecture.image ? (
-                  // UPDATED: constrained + centered instead of full-width,
-                  // to match the smaller diagram size used on the reference portfolio.
-                  <img
-                    src={cs.architecture.image}
-                    alt={`${project.title} architecture diagram`}
-                    loading="lazy"
-                    className="rounded-xl border border-panel-border w-full max-w-[560px] mx-auto block"
-                  />
-                ) : (
-                  <div className="border border-dashed border-panel-border rounded-xl p-10 flex flex-col items-center gap-2 text-muted-2 text-sm">
-                    <ImageIcon size={22} />
-                    Architecture diagram coming soon.
-                  </div>
-                )}
-                {cs.architecture.notes?.length > 0 && (
-                  <ul className="space-y-3 mt-6">
-                    {cs.architecture.notes.map((note) => (
-                      <li key={note} className="relative pl-5 text-muted text-[0.95rem] leading-7">
-                        <span className="absolute left-0 top-[3px] w-1.5 h-1.5 rounded-full bg-accent" />
-                        {note}
-                      </li>
-                    ))}
-                  </ul>
-                )}
+            {/* UPDATED: always rendered — shows the placeholder box when no
+                architecture data/image exists yet, instead of disappearing. */}
+            <section id="architecture" className="mb-16 scroll-mt-32">
+              <h2 className="font-display text-2xl font-bold mb-5">Architecture</h2>
+              {cs.architecture?.description && (
+                <p className="text-muted leading-8 mb-6">{cs.architecture.description}</p>
+              )}
+              {cs.architecture?.image ? (
+                <img
+                  src={cs.architecture.image}
+                  alt={`${project.title} architecture diagram`}
+                  loading="lazy"
+                  className="rounded-xl border border-panel-border w-full max-w-[560px] mx-auto block"
+                />
+              ) : (
+                <div className="border border-dashed border-panel-border rounded-xl p-10 flex flex-col items-center gap-2 text-muted-2 text-sm">
+                  <ImageIcon size={22} />
+                  Architecture diagram coming soon.
+                </div>
+              )}
+              {cs.architecture?.notes?.length > 0 && (
+                <ul className="space-y-3 mt-6">
+                  {cs.architecture.notes.map((note) => (
+                    <li key={note} className="relative pl-5 text-muted text-[0.95rem] leading-7">
+                      <span className="absolute left-0 top-[3px] w-1.5 h-1.5 rounded-full bg-accent" />
+                      {note}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </section>
+
+            {/* NEW: generic "Highlights" section — reuses each project's
+                existing project.highlights array (no new copy invented). */}
+            {cs.highlights?.length > 0 && (
+              <section id="highlights" className="mb-16 scroll-mt-32">
+                <h2 className="font-display text-2xl font-bold mb-5">Highlights</h2>
+                <ul className="space-y-3">
+                  {cs.highlights.map((item) => (
+                    <li key={item} className="relative pl-5 text-muted text-[0.95rem] leading-7">
+                      <span className="absolute left-0 top-[-2px] text-accent text-lg leading-none">·</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
               </section>
             )}
 
