@@ -87,8 +87,10 @@ export default function CertificationModal({ cert, onClose }) {
               {cert.credentialId && (
                 <span className="font-mono text-xs text-muted-2 break-all mr-auto">ID: {cert.credentialId}</span>
               )}
+              {/* NEW: downloadUrl lets a caller point Download at a different
+                  file (e.g. the original PDF) than the previewed image. */}
               <a
-                href={cert.image}
+                href={cert.downloadUrl || cert.image}
                 download
                 className="glow-btn inline-flex items-center gap-1.5 text-sm font-semibold px-4 py-2.5 rounded-full border border-panel-border text-text hover:border-accent hover:text-accent"
               >

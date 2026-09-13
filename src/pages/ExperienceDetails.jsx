@@ -1,6 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import experienceData from "../data/experienceData";
+import CertificationModal from "../components/certifications/CertificationModal"; // NEW: reuse the certifications-page modal
 
 export default function ExperienceDetails() {
   const { id } = useParams();
@@ -11,6 +12,7 @@ export default function ExperienceDetails() {
   const previousExperience = experienceData[currentIndex - 1];
 
   const [activeSection, setActiveSection] = useState("overview");
+  const [certModalOpen, setCertModalOpen] = useState(false); // NEW: controls the certificate preview modal
 
   useEffect(() => {
     const sections = document.querySelectorAll("section[id]");
@@ -185,12 +187,14 @@ export default function ExperienceDetails() {
                         headline ("Certificate of Virtual Internship") at the top of the card
                         itself, mirroring the "completed" badge + title pattern on the project
                         card. The PDF file is untouched — the headline lives only in this UI. */}
+                    {/* UPDATED: now a button that opens CertificationModal (same lightbox as
+                        the Certifications page — zoom, Download, no dead "open PDF" link)
+                        instead of an <a> that opened the raw PDF in a new tab. */}
                     {experience.credentialUrl && (
-                      <a
-                        href={experience.credentialUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="glow-card block bg-bg-alt border border-accent-dim rounded-[32px] p-5 min-h-[360px] flex flex-col justify-between"
+                      <button
+                        type="button"
+                        onClick={() => setCertModalOpen(true)}
+                        className="glow-card block w-full text-left bg-bg-alt border border-accent-dim rounded-[32px] p-5 min-h-[360px] flex flex-col justify-between"
                       >
                         <div>
                           <div className="flex items-center justify-between mb-6">
@@ -220,10 +224,10 @@ export default function ExperienceDetails() {
                         </div>
                         <div className="border-t border-panel-border mt-8 pt-5">
                           <p className="text-accent text-sm font-semibold flex items-center gap-2">
-                            View Certificate <span className="text-lg">↗</span>
+                            View Certificate <span className="text-lg">→</span>
                           </p>
                         </div>
-                      </a>
+                      </button>
                     )}
                   </div>
                 ) : (
@@ -265,6 +269,23 @@ export default function ExperienceDetails() {
           </Link>
         )}
       </div>
+
+      {/* NEW: certificate preview modal — same component/UX as the Certifications page */}
+      {experience.credentialUrl && (
+        <CertificationModal
+          cert={
+            certModalOpen
+              ? {
+                  title: "Certificate of Virtual Internship",
+                  organization: experience.company,
+                  image: experience.credentialImage,
+                  downloadUrl: experience.credentialUrl, // downloads the original PDF, not the jpg preview
+                }
+              : null
+          }
+          onClose={() => setCertModalOpen(false)}
+        />
+      )}
     </div>
   );
 }
