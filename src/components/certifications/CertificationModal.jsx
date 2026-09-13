@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react"; // UPDATED: added useRef for the fullscreen target element
 import { AnimatePresence, motion } from "framer-motion";
-import { X, ExternalLink, Download, ZoomIn, ZoomOut } from "lucide-react";
+import { X, ExternalLink, Download, ZoomIn, ZoomOut, Maximize, Minimize } from "lucide-react"; // UPDATED: added Maximize/Minimize icons
 
 export default function CertificationModal({ cert, onClose }) {
   const [zoomed, setZoomed] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(false); // NEW
+  const viewerRef = useRef(null); // NEW: element that goes full-screen (image viewer pane)
 
   // Lock body scroll while the modal is open + close on Escape.
   useEffect(() => {
@@ -26,6 +28,32 @@ export default function CertificationModal({ cert, onClose }) {
   useEffect(() => {
     setZoomed(false);
   }, [cert]);
+
+  // NEW: keep isFullscreen in sync with the actual browser state (covers Esc,
+  // F11, or the browser's own fullscreen exit control, not just our button).
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      setIsFullscreen(document.fullscreenElement === viewerRef.current);
+    };
+    document.addEventListener("fullscreenchange", handleFullscreenChange);
+    return () => document.removeEventListener("fullscreenchange", handleFullscreenChange);
+  }, []);
+
+  // Exit fullscreen automatically if the modal itself closes.
+  useEffect(() => {
+    if (!cert && document.fullscreenElement) {
+      document.exitFullscreen().catch(() => {});
+    }
+  }, [cert]);
+
+  const toggleFullscreen = () => {
+    if (!viewerRef.current) return;
+    if (document.fullscreenElement) {
+      document.exitFullscreen().catch(() => {});
+    } else {
+      viewerRef.current.requestFullscreen?.().catch(() => {});
+    }
+  };
 
   return (
     <AnimatePresence>
@@ -62,8 +90,21 @@ export default function CertificationModal({ cert, onClose }) {
               </button>
             </div>
 
-            {/* Image viewer */}
-            <div className="relative flex-1 overflow-auto bg-bg-alt flex items-center justify-center min-h-[280px]">
+            {/* Image viewer — also the fullscreen target element (NEW: ref + bg-bg-alt
+                classes apply in fullscreen too, so it fills the screen cleanly). */}
+            <div
+              ref={viewerRef}
+              className="relative flex-1 overflow-auto bg-bg-alt flex items-center justify-center min-h-[280px]"
+            >
+              {/* NEW: fullscreen toggle, sits left of the zoom button */}
+              <button
+                type="button"
+                onClick={toggleFullscreen}
+                aria-label={isFullscreen ? "Exit full screen" : "View full screen"}
+                className="glow-icon glow-card absolute top-3 right-14 z-10 w-9 h-9 flex items-center justify-center rounded-lg bg-panel/90 border border-panel-border text-text hover:text-accent"
+              >
+                {isFullscreen ? <Minimize size={16} /> : <Maximize size={16} />}
+              </button>
               <button
                 type="button"
                 onClick={() => setZoomed((z) => !z)}
@@ -78,7 +119,7 @@ export default function CertificationModal({ cert, onClose }) {
                 onClick={() => setZoomed((z) => !z)}
                 className={`w-full h-auto transition-transform duration-300 cursor-zoom-in ${
                   zoomed ? "scale-150 cursor-zoom-out" : "scale-100"
-                }`}
+                } ${isFullscreen ? "max-h-screen w-auto object-contain" : ""}`}
               />
             </div>
 
@@ -87,7 +128,7 @@ export default function CertificationModal({ cert, onClose }) {
               {cert.credentialId && (
                 <span className="font-mono text-xs text-muted-2 break-all mr-auto">ID: {cert.credentialId}</span>
               )}
-              {/* NEW: downloadUrl lets a caller point Download at a different
+              {/* downloadUrl lets a caller point Download at a different
                   file (e.g. the original PDF) than the previewed image. */}
               <a
                 href={cert.downloadUrl || cert.image}
