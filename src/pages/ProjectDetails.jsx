@@ -85,7 +85,8 @@ export default function ProjectDetails() {
   // NEW: prev/next footer, shared by both layouts
   const PrevNext = () =>
     (prevProject || nextProject) && (
-      <div className="flex justify-between gap-4 mt-14 pt-8 border-t border-panel-border">
+      // UPDATED: mt-10 pt-8 -> mt-8 pt-6 (tighter)
+      <div className="flex justify-between gap-4 mt-8 pt-6 border-t border-panel-border">
         {prevProject ? (
           <NavLink to={`/projects/${prevProject.id}`} className="glow-navlink flex flex-col items-start gap-1 text-left max-w-[45%]">
             <span className="inline-flex items-center gap-1.5 text-muted-2 text-xs uppercase tracking-wide">
@@ -114,10 +115,11 @@ export default function ProjectDetails() {
     return <CaseStudyLayout project={project} Header={Header} PrevNext={PrevNext} />;
   }
 
-  // ===== ORIGINAL simple layout — unchanged, still used by projects that
-  // don't have a caseStudy (Online Book Store, Online Blogging System). =====
+  // ===== ORIGINAL simple layout — still used by projects that don't have a
+  // caseStudy (Online Book Store, Online Blogging System). =====
   return (
-    <section className="py-24">
+    // UPDATED: pb-10 -> pb-4 (further reduced per feedback)
+    <section className="pt-24 pb-4">
       <div className="max-w-[820px] mx-auto px-6 md:px-8">
         <div className="mb-8">
           <NavLink to="/projects" className="glow-navlink inline-flex items-center gap-1.5 text-muted text-sm hover:text-accent">
@@ -222,7 +224,8 @@ function CaseStudyLayout({ project, Header, PrevNext }) {
   }, [project.id]);
 
   return (
-    <section className="py-24">
+    // UPDATED: pb-10 -> pb-4 (further reduced per feedback — still too much gap above footer)
+    <section className="pt-24 pb-4">
       <div className="max-w-[1120px] mx-auto px-6 md:px-8">
         <div className="max-w-[820px]">
           <Header />
