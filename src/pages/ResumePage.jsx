@@ -1,6 +1,6 @@
 import { useMemo } from "react"; // NEW: for generating the card's network pattern
 import { NavLink } from "react-router-dom"; // NEW
-import { User, Briefcase, GraduationCap, Code2, Award, Eye, Download, FileText, ArrowRight, Calendar } from "lucide-react"; // CHANGED: swapped Circle for Calendar
+import { User, Briefcase, GraduationCap, Code2, Award, Eye, Download, FileText, ArrowRight } from "lucide-react";
 import profile from "../data/profileData";
 
 const whatsInside = [
@@ -128,12 +128,7 @@ export default function ResumePage() {
 
             <h2 className="relative z-10 font-display text-xl font-bold">{profile.name} — Resume</h2>
 
-            <p className="relative z-10 inline-flex items-center gap-1.5 text-muted-2 text-sm mt-2.5">
-              <Calendar size={14} />
-              Last updated: {profile.resumeLastUpdated}
-            </p>
-
-            <div className="relative z-10 flex flex-wrap justify-center gap-2 mt-6">
+            <div className="relative z-10 flex flex-wrap justify-center gap-2 mt-7">
               {resumeSections.map((label) => (
                 <span
                   key={label}
