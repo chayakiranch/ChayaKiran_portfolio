@@ -1,5 +1,5 @@
-import { NavLink } from "react-router-dom"; // NEW
-import { ArrowRight, Award } from "lucide-react"; // NEW
+import { Award } from "lucide-react"; // CHANGED: ArrowRight/NavLink no longer needed (handled by <Button>)
+import Button from "../components/Button"; // NEW
 import SectionHeading from "../components/SectionHeading";
 import { extraCurricular } from "../data/certificationsData";
 import profile from "../data/profileData";
@@ -47,10 +47,10 @@ export default function AboutPage() {
             </div>
 
             {/* NEW: CTA to the Certifications & Achievements page */}
-            <NavLink to="/certifications" className="glow-navlink inline-flex items-center gap-1.5 text-accent text-sm font-semibold mt-8 group">
-              <Award size={15} /> View Certifications
-              <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
-            </NavLink>
+            {/* CHANGED: text link -> secondary <Button> with arrow; same route */}
+            <Button to="/certifications" variant="secondary" icon={Award} arrow="right" className="mt-8">
+              View Certifications
+            </Button>
           </div>
         </div>
       </div>

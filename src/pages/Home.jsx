@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { ArrowRight, GraduationCap } from "lucide-react";
 import Hero from "../components/Hero";
+import Button from "../components/Button"; // NEW: shared button component
 import SkillCard from "../components/SkillCard"; // NEW: replaces Chip-based Skills layout
 import Chip from "../components/Chip";
 import profile from "../data/profileData";
@@ -38,9 +39,10 @@ export default function Home() {
             </h2>
             <div>
               <p className="text-muted">{profile.objective}</p>
-              <NavLink to="/about" className="glow-navlink inline-flex items-center gap-1.5 text-accent text-sm font-semibold mt-6 group">
-                Read the full story <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
-              </NavLink>
+              {/* CHANGED: NavLink -> <Button variant="link"> (same route, consistent arrow) */}
+              <Button to="/about" variant="link" arrow="right" className="mt-6">
+                Read the Full Story
+              </Button>
             </div>
           </div>
         </div>
@@ -140,9 +142,10 @@ export default function Home() {
 
           {/* NEW: "View experience" link now sits at the bottom of the tab (Task 3) */}
           <div className="text-center mt-10">
-            <NavLink to="/experience" className="glow-navlink inline-flex items-center gap-1.5 text-accent text-sm font-semibold group">
-              View experience <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
-            </NavLink>
+            {/* CHANGED: NavLink -> <Button variant="link"> */}
+            <Button to="/experience" variant="link" arrow="right">
+              View Experience
+            </Button>
           </div>
         </div>
       </section>
@@ -217,9 +220,10 @@ export default function Home() {
 
           {/* NEW: "View education" link now sits at the bottom of the tab (Task 3) */}
           <div className="text-center mt-10">
-            <NavLink to="/education" className="glow-navlink inline-flex items-center gap-1.5 text-accent text-sm font-semibold group">
-              View education <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
-            </NavLink>
+            {/* CHANGED: NavLink -> <Button variant="link"> */}
+            <Button to="/education" variant="link" arrow="right">
+              View Education
+            </Button>
           </div>
         </div>
       </section>
@@ -290,9 +294,10 @@ export default function Home() {
           </div>
 
           <div className="text-center mt-10">
-            <NavLink to="/projects" className="glow-navlink inline-flex items-center gap-1.5 text-accent text-sm font-semibold group">
-              View all projects <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
-            </NavLink>
+            {/* CHANGED: NavLink -> <Button variant="link"> */}
+            <Button to="/projects" variant="link" arrow="right">
+              View All Projects
+            </Button>
           </div>
         </div>
       </section>
@@ -307,12 +312,10 @@ export default function Home() {
             I'm always open to discussing new projects, creative ideas, or opportunities to be part of your
             vision — including internships and entry-level cloud/full-stack roles.
           </p>
-          <NavLink
-            to="/contact"
-            className="glow-btn inline-flex items-center justify-center font-semibold text-[0.95rem] px-[26px] py-3.5 rounded-full bg-accent text-[#06201d]"
-          >
-            Get in touch
-          </NavLink>
+          {/* CHANGED: closing CTA -> primary specular <Button>, arrow added */}
+          <Button to="/contact" variant="primary" size="lg" arrow="right">
+            Get in Touch
+          </Button>
         </div>
       </section>
     </>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Mail, Linkedin, Github, Award } from "lucide-react"; // UPDATED: Phone icon removed, Award icon added for Credly (Task 23)
 import profile from "../data/profileData";
+import Button from "../components/Button"; // NEW: shared button component
 
 // NEW: strips "https://www." (or bare "https://") for cleaner display text,
 // while the raw URL is still used for the actual href (Task 22)
@@ -85,7 +86,10 @@ export default function ContactPage() {
                 <label htmlFor="message" className="text-sm font-semibold text-text">Message</label>
                 <textarea id="message" name="message" rows={5} required value={form.message} onChange={handleChange} placeholder="Have a project or idea? Let's connect and bring it to life together." className="glow-input bg-bg-alt border border-panel-border rounded-xl px-4 py-3.5 text-text placeholder:text-muted-2 focus:outline-none resize-y" />
               </div>
-              <button type="submit" className="glow-btn self-start font-semibold text-[0.95rem] px-7 py-3.5 rounded-full bg-accent text-[#06201d]">Send Message</button>
+              {/* CHANGED: native <button> -> primary specular <Button type="submit"> (form handler untouched) */}
+              <Button type="submit" variant="primary" size="lg" arrow="right" className="self-start">
+                Send Message
+              </Button>
               {note && <p className="text-accent text-sm">{note}</p>}
             </form>
           </div>

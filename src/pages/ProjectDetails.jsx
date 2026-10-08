@@ -2,6 +2,7 @@ import { useParams, NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { ArrowLeft, ArrowRight, ExternalLink, Github, Image as ImageIcon } from "lucide-react";
 import Chip from "../components/Chip";
+import Button from "../components/Button"; // NEW: shared button component
 import projectsData from "../data/projectsData";
 
 export default function ProjectDetails() {
@@ -61,18 +62,20 @@ export default function ProjectDetails() {
 
       <div className="flex gap-3 flex-wrap mt-6">
         {project.liveUrl ? (
-          <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="glow-btn inline-flex items-center gap-2 text-sm font-semibold px-5 py-3 rounded-full bg-accent text-[#06201d]">
-            <ExternalLink size={15} /> Live demo
-          </a>
+          // CHANGED: primary specular <Button>; label "Live demo" -> "Live Demo ↗" (arrow replaces the old icon)
+          <Button href={project.liveUrl} external variant="primary" arrow="up-right">
+            Live Demo
+          </Button>
         ) : (
           <span className="inline-flex items-center gap-2 text-sm font-medium px-5 py-3 rounded-full border border-dashed border-panel-border text-muted-2">
             <ExternalLink size={15} /> Live demo link coming soon
           </span>
         )}
         {project.repoUrl ? (
-          <a href={project.repoUrl} target="_blank" rel="noopener noreferrer" className="glow-btn inline-flex items-center gap-2 text-sm font-semibold px-5 py-3 rounded-full border border-panel-border text-text hover:border-accent">
-            <Github size={15} /> Source code
-          </a>
+          // CHANGED: secondary <Button>; label "Source code" -> "View Source ↗"
+          <Button href={project.repoUrl} external variant="secondary" icon={Github} arrow="up-right">
+            View Source
+          </Button>
         ) : (
           <span className="inline-flex items-center gap-2 text-sm font-medium px-5 py-3 rounded-full border border-dashed border-panel-border text-muted-2">
             <Github size={15} /> Repo link coming soon

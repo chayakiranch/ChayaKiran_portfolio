@@ -1,6 +1,6 @@
 import { useMemo } from "react"; // NEW: for generating the card's network pattern
-import { NavLink } from "react-router-dom"; // NEW
-import { User, Briefcase, GraduationCap, Code2, Award, Eye, Download, FileText, ArrowRight } from "lucide-react";
+import { User, Briefcase, GraduationCap, Code2, Award, Download, FileText } from "lucide-react"; // CHANGED: Eye/ArrowRight/NavLink no longer needed
+import Button from "../components/Button"; // NEW
 import profile from "../data/profileData";
 
 const whatsInside = [
@@ -97,9 +97,9 @@ export default function ResumePage() {
                       <p className="text-muted text-sm mt-0.5">{item.desc}</p>
                       {/* NEW: link straight to the full Certifications page */}
                       {isCertifications && (
-                        <NavLink to="/certifications" className="glow-navlink inline-flex items-center gap-1.5 text-accent text-sm font-semibold mt-4 group"> {/* FIXED: mt-2 -> mt-4 so it doesn't look merged with the desc text (Task 19) */}
-                          View all certifications <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
-                        </NavLink>
+<Button to="/certifications" variant="link" arrow="right" className="mt-4">
+                          View All Certifications
+                        </Button>
                       )}
                     </div>
                   </div>
@@ -141,21 +141,13 @@ export default function ResumePage() {
 
             {/* CHANGED: flex-wrap -> fixed 2-col grid so the buttons always sit side-by-side, even on narrow screens */}
             <div className="relative z-10 grid grid-cols-2 gap-3 mt-8 w-full max-w-[360px]">
-              <a
-                href={profile.resumeFile}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="glow-btn inline-flex items-center justify-center gap-2 font-semibold text-sm px-4 py-3 rounded-full border border-panel-border text-text hover:border-accent hover:text-accent"
-              >
-                <Eye size={16} /> Open Preview
-              </a>
-              <a
-                href={profile.resumeFile}
-                download
-                className="glow-btn inline-flex items-center justify-center gap-2 font-semibold text-sm px-4 py-3 rounded-full bg-accent text-[#06201d]"
-              >
-                <Download size={16} /> Download Resume
-              </a>
+              {/* CHANGED: both -> shared <Button>. Preview = secondary + ↗ (opens new tab); Download = primary. */}
+              <Button href={profile.resumeFile} external variant="secondary" size="sm" arrow="up-right" fullWidth>
+                Open Preview
+              </Button>
+              <Button href={profile.resumeFile} download variant="primary" size="sm" icon={Download} fullWidth>
+                Download Resume
+              </Button>
             </div>
           </div>
 

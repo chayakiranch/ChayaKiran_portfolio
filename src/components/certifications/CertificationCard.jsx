@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import Button from "../Button"; // NEW: shared button component
 
 // Simplified per redesign: image, date, title, organization, Verify Credential.
 // Skills/expiry/credential-ID rows and the secondary "View" button were removed.
@@ -38,14 +39,10 @@ export default function CertificationCard({ cert, onView }) {
         <p className="text-accent text-sm font-medium">{cert.organization}</p>
 
         {cert.credentialUrl && (
-          <a
-            href={cert.credentialUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="glow-navlink inline-flex items-center gap-1 text-sm font-semibold text-accent hover:text-text transition-colors mt-4"
-          >
-            Verify Credential →
-          </a>
+          // CHANGED: plain link -> <Button variant="link">; "→" replaced by "↗" because it opens a new tab
+          <Button href={cert.credentialUrl} external variant="link" arrow="up-right" className="mt-4">
+            Verify Credential
+          </Button>
         )}
       </div>
     </motion.div>

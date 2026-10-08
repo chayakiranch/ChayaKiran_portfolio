@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react"; // UPDATED: added useRef for the fullscreen target element
 import { AnimatePresence, motion } from "framer-motion";
-import { X, ExternalLink, Download, ZoomIn, ZoomOut, Maximize, Minimize } from "lucide-react"; // UPDATED: added Maximize/Minimize icons
+import { X, Download, ZoomIn, ZoomOut, Maximize, Minimize } from "lucide-react"; // CHANGED: ExternalLink removed (arrow now comes from <Button>)
+import Button from "../Button"; // NEW: shared button component
 
 export default function CertificationModal({ cert, onClose }) {
   const [zoomed, setZoomed] = useState(false);
@@ -130,22 +131,14 @@ export default function CertificationModal({ cert, onClose }) {
               )}
               {/* downloadUrl lets a caller point Download at a different
                   file (e.g. the original PDF) than the previewed image. */}
-              <a
-                href={cert.downloadUrl || cert.image}
-                download
-                className="glow-btn inline-flex items-center gap-1.5 text-sm font-semibold px-4 py-2.5 rounded-full border border-panel-border text-text hover:border-accent hover:text-accent"
-              >
-                <Download size={15} /> Download
-              </a>
+              {/* CHANGED: Download -> secondary <Button>; Verify Credential -> primary <Button> with ↗ */}
+              <Button href={cert.downloadUrl || cert.image} download variant="secondary" size="sm" icon={Download}>
+                Download
+              </Button>
               {cert.credentialUrl && (
-                <a
-                  href={cert.credentialUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="glow-btn inline-flex items-center gap-1.5 text-sm font-semibold px-4 py-2.5 rounded-full bg-accent text-[#06201d]"
-                >
-                  Verify Credential <ExternalLink size={15} />
-                </a>
+                <Button href={cert.credentialUrl} external variant="primary" size="sm" arrow="up-right">
+                  Verify Credential
+                </Button>
               )}
             </div>
           </motion.div>

@@ -1,5 +1,5 @@
 import { useLayoutEffect, useRef } from "react"; // NEW: refs + pre-paint effect for the name animation
-import { NavLink } from "react-router-dom";
+import Button from "./Button"; // CHANGED: NavLink replaced by the shared Button component
 import { animate, scrambleText } from "animejs"; // NEW: anime.js v4 scramble text effect
 import profile from "../data/profileData";
 
@@ -23,9 +23,9 @@ export default function Hero() {
     const anims = [firstRef.current, lastRef.current].map((el, i) =>
       animate(el, {
         innerHTML: scrambleText(), // scrambles, then settles on the original text
-        delay: i * 250, // second line starts slightly after the first
-        loop: false, // run only once
-      }),
+        delay: i * 250,            // second line starts slightly after the first
+        loop: false,               // run only once
+      })
     );
 
     // Cleanup (also keeps React StrictMode's double-mount from running it twice)
@@ -38,9 +38,7 @@ export default function Hero() {
         <p className="inline-flex items-center gap-2 font-mono text-[0.82rem] text-accent border border-accent-dim bg-accent/[6%] px-3.5 py-1.5 rounded-full mb-7">
           <span
             className="w-1.5 h-1.5 rounded-full bg-accent"
-            style={{
-              animation: "node-pulse 2.2s cubic-bezier(0.16,1,0.3,1) infinite",
-            }}
+            style={{ animation: "node-pulse 2.2s cubic-bezier(0.16,1,0.3,1) infinite" }}
           />
           Available for internships &amp; entry-level roles
         </p>
@@ -50,55 +48,37 @@ export default function Hero() {
           aria-label="Chintakula Chaya Kiran"
           className="font-display font-bold text-[clamp(2.6rem,7vw,5.2rem)] leading-[1.02] tracking-tight"
         >
-          <span ref={firstRef} aria-hidden="true">
-            Chintakula
-          </span>
+          <span ref={firstRef} aria-hidden="true">Chintakula</span>
           <br />
-          <span ref={lastRef} aria-hidden="true" className="text-accent">
-            Chaya Kiran
-          </span>
+          <span ref={lastRef} aria-hidden="true" className="text-accent">Chaya Kiran</span>
         </h1>
 
         <p className="mt-6 text-[clamp(1.05rem,1.6vw,1.3rem)] text-muted max-w-[640px] leading-relaxed">
           Computer Science engineer building at the edge of{" "}
-          <span className="text-text font-medium">cloud infrastructure</span>{" "}
-          and{" "}
-          <span className="text-text font-medium">full-stack web systems</span>{" "}
-          — from AWS architecture to MERN-stack products that ship.
+          <span className="text-text font-medium">cloud infrastructure</span> and{" "}
+          <span className="text-text font-medium">full-stack web systems</span> — from AWS architecture
+          to MERN-stack products that ship.
         </p>
 
-        {/* GLOW SYSTEM: added .glow-btn to all 3 CTAs for unified lift+glow */}
+        {/* CHANGED: 3 hero CTAs now use the shared <Button>.
+            Primary = specular; the other two = subtle secondary. Routes unchanged. */}
         <div className="flex gap-4 mt-10 flex-wrap">
-          <NavLink
-            to="/projects"
-            className="glow-btn inline-flex items-center justify-center font-semibold text-[0.95rem] px-[26px] py-3.5 rounded-full bg-accent text-[#06201d]"
-          >
-            View Projects
-          </NavLink>
-          <NavLink
-            to="/resume"
-            className="glow-btn inline-flex items-center justify-center font-semibold text-[0.95rem] px-[26px] py-3.5 rounded-full border border-panel-border text-text hover:border-accent hover:text-accent"
-          >
-            View Resume
-          </NavLink>
-          {/* CHANGED: "View Certifications" CTA replaced with a Contact CTA */}
-          <NavLink
-            to="/contact"
-            className="glow-btn inline-flex items-center justify-center font-semibold text-[0.95rem] px-[26px] py-3.5 rounded-full border border-panel-border text-text hover:border-accent hover:text-accent"
-          >
-            Contact
-          </NavLink>
+          <Button to="/projects" variant="primary" size="lg" arrow="right">
+            Explore Projects {/* CHANGED: was "View Projects" */}
+          </Button>
+          <Button to="/resume" variant="secondary" size="lg" arrow="up-right">
+            View Resume {/* arrow added */}
+          </Button>
+          <Button to="/contact" variant="secondary" size="lg" arrow="right">
+            Let's Connect {/* CHANGED: was "Contact" */}
+          </Button>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-5 mt-[76px] pt-8 border-t border-panel-border max-w-[760px]">
           {stats.map((s) => (
             <div key={s.label} className="flex flex-col gap-1.5">
-              <span className="font-display text-2xl font-semibold text-accent">
-                {s.num}
-              </span>
-              <span className="text-[0.8rem] text-muted-2 leading-snug">
-                {s.label}
-              </span>
+              <span className="font-display text-2xl font-semibold text-accent">{s.num}</span>
+              <span className="text-[0.8rem] text-muted-2 leading-snug">{s.label}</span>
             </div>
           ))}
         </div>
